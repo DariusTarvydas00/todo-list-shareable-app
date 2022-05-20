@@ -6,9 +6,13 @@ services:
     build:
       context: todo-list-shareable-backend
       dockerfile: Dockerfile-dev
+    ports:
+      - "3000-3000"
   vue:
     image: todo_list_shareable_frontend
     container_name: todo-vue
     build:
       context: todo-list-shareable-frontend
       dockerfile: Dockerfile-dev
+    ports:
+      - "8081:8080"
