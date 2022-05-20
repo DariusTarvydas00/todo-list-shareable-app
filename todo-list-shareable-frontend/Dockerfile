@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:latest
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 8081
 
-CMD ["npm", "start", "dev"]
+CMD ["npm", "run", "serve"]
