@@ -1,7 +1,7 @@
 version: '3'
 services:
   nestjs:
-    image: todo_list_shareable_backend_production
+    image: todo_list_shareable_backend_development
     container_name: todo-nestjs
     build:
       context: todo-list-shareable-backend
@@ -11,7 +11,7 @@ services:
     networks:
       - net
   vue:
-    image: todo_list_shareable_frontend_production
+    image: todo_list_shareable_frontend_development
     container_name: todo-vue
     build:
       context: todo-list-shareable-frontend
