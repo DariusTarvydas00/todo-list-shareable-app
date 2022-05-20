@@ -5,9 +5,14 @@ FROM node:16-alpine3.14 AS base
 FROM base AS development
 
 WORKDIR /node
+
 COPY package*.json ./
-RUN NODE_ENV=development && npm ci && npm cache clean --force
-EXPOSE 3000
+RUN \
+    NODE_ENV=development && \
+    npm ci && \
+    npm cache clean --force \
+
+WORKDIR /node/app
 CMD ["npm", "start"]
 
 # Source stage
