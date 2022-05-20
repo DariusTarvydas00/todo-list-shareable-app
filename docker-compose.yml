@@ -3,6 +3,7 @@ services:
   nestjs:
     build:
       context: todo-list-shareable-backend
+      target: development
     environment:
       - NODE_ENV=development
     ports:
