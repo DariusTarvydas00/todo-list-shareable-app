@@ -1,9 +1,22 @@
+# Base stage
+# ---------------------------------------
 FROM node:18-alpine3.14 AS base
 
+# This get shared across later stages
+WORKDIR /node
+RUN chown node:node /node
+USER node
+
+# Development stage
+# ---------------------------------------
 FROM base AS development
 
-WORKDIR /node
-COPY package*.json ./
+ENV SERVER_PORT=8081
+ENV PATH /node/node_modules/.bin:$PATH
+EXPOSE $SERVER_PORT 9230
+
+COPY --chown=node:node package*.json ./
+
 RUN \
   NODE_ENV=development && \
   npm ci && \
@@ -11,22 +24,47 @@ RUN \
 
 WORKDIR /node/app
 
-EXPOSE 8081
-CMD ["npm", "serve"]
+CMD [ "nodemon" ]
 
+# Source stage
+# ---------------------------------------
 FROM base AS source
 
-WORKDIR /node
-COPY package*.json ./
-RUN npm ci && npm cache clean --force
-COPY . .
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
 
+WORKDIR /node
+COPY --chown=node:node package*.json ./
+
+RUN \
+  npm ci --no-optional && \
+  npm cache clean --force
+
+COPY --chown=node:node . .
+
+# Test stage
+# ---------------------------------------
 FROM source AS test
 
-COPY --from=development /node/node_modules /node/node_modules
-RUN npm run test && npm run lint
+ARG NODE_ENV=development
+ENV NODE_ENV=${NODE_ENV}
+ENV PATH /node/node_modules/.bin:$PATH
 
+COPY --chown=node:node --from=development /node/node_modules /node/node_modules
+
+RUN \
+  npm run test && \
+  npm run lint
+
+# Production stage
+# ---------------------------------------
 FROM source AS production
 
-EXPOSE 3000
-CMD [ "npm", "start" ]
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+ENV PATH /node/node_modules/.bin:$PATH
+ENV SERVER_PORT=8081
+
+EXPOSE $SERVER_PORT
+
+CMD [ "node", "./bin/www" ]
