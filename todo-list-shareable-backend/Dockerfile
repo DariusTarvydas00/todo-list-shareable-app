@@ -2,7 +2,7 @@ FROM node:16-alpine3.14
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json ./app/
 
 RUN npm ci && npm cache clean --force
 
