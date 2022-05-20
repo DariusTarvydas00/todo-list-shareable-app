@@ -5,7 +5,7 @@ services:
     container_name: todo-nestjs
     build:
       context: todo-list-shareable-backend
-      dockerfile: todo-list-shareable-backend/Dockerfile-dev
+      dockerfile: Dockerfile-dev
   vue:
     image: todo_list_shareable_frontend
     container_name: todo-vue
