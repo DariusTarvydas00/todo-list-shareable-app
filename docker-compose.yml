@@ -1,7 +1,12 @@
 version: '3.4'
 services:
   nestjs:
-    image: todo_list_shareable_backend_development
+    build:
+      context: todo-list-shareable-backend
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"
 #  nestjs:
 #    image: todo_list_shareable_backend_development
 #    container_name: todo-nestjs
