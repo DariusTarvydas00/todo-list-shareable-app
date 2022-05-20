@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nestjs:
+    image: todo_list_shareable_backend
+    container_name: todo-nestjs
+    build:
+      context: todo-list-shareable-backend2
+      dockerfile: todo-list-shareable-backend/Dockerfile-dev
+  vue:
+    image: todo_list_shareable_frontend
+    container_name: todo-vue
+    build:
+      context: todo-list-shareable-frontend
+      dockerfile: Dockerfile-dev
