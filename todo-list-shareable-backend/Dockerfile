@@ -6,7 +6,9 @@ FROM base AS development
 
 WORKDIR /app
 COPY package*.json ./
+RUN ls -al
 RUN NODE_ENV=development && npm ci && npm cache clean --force
+RUN ls -al
 WORKDIR /node/app
 EXPOSE 3000
 CMD ["npm", "start"]
