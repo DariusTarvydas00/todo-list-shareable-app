@@ -2,9 +2,11 @@ FROM node:16-alpine3.14
 
 WORKDIR /app
 
-COPY . .
+COPY package*.json ./
 
-RUN npm install
+RUN npm ci && npm cache clean --force
+
+COPY . .
 
 EXPOSE 3000
 
