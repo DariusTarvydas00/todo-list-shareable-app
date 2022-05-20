@@ -6,7 +6,7 @@ COPY ./package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY todo-list-shareable-frontend .
 
 EXPOSE 8081
 
