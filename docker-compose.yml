@@ -1,11 +1,16 @@
-version: '3'
+version: '3.4'
 services:
   nestjs:
     image: todo_list_shareable_backend_development
     container_name: todo-nestjs
     build:
       context: todo-list-shareable-backend
-      dockerfile: Dockerfile
+      target: development
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./app:delegated
+      - /node/app/node_modules
     ports:
       - "3000-3000"
     networks:
@@ -15,7 +20,12 @@ services:
     container_name: todo-vue
     build:
       context: todo-list-shareable-frontend
-      dockerfile: Dockerfile
+      target: development
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./app:delegated
+      - /node/app/node_modules
     ports:
       - "8081:8080"
     networks:

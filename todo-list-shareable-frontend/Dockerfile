@@ -1,26 +1,32 @@
-FROM node:18-alpine As development
+FROM node:18-alpine3.14 AS base
 
-WORKDIR /app/vue
+FROM base AS development
 
-COPY ./package*.json ./
-
-RUN npm install --only=development
-
-Copy . .
-
-RUN npm run build
-
-FROM node:18-alpine As production
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
+WORKDIR /node
 COPY package*.json ./
+RUN \
+  NODE_ENV=development && \
+  npm ci && \
+  npm cache clean --force
 
-RUN npm install --only=production
+WORKDIR /node/app
 
+EXPOSE 8081
+CMD ["npm", "serve"]
+
+FROM base AS source
+
+WORKDIR /node
+COPY package*.json ./
+RUN npm ci && npm cache clean --force
 COPY . .
 
-COPY --from=development /app/vue/dist ./dist
+FROM source AS test
 
-CMD ["node", "dist/main"]
+COPY --from=development /node/node_modules /node/node_modules
+RUN npm run test && npm run lint
+
+FROM source AS production
+
+EXPOSE 3000
+CMD [ "npm", "start" ]

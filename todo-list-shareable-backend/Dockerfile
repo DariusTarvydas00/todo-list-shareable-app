@@ -1,13 +1,32 @@
-FROM node:18-alpine3.14
+FROM node:18-alpine3.14 AS base
 
-WORKDIR /app
+FROM base AS development
 
-COPY ./package*.json ./
+WORKDIR /node
+COPY package*.json ./
+RUN \
+  NODE_ENV=development && \
+  npm ci && \
+  npm cache clean --force
 
-RUN npm ci && npm cache clean --force
+WORKDIR /node/app
 
-COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
 
-EXPOSE 8081
+WORKDIR /node
+COPY package*.json ./
+RUN \
+  NODE_ENV=development && \
+  npm ci && \
+  npm cache clean --force
 
-CMD ["npm", "run", "serve"]
+FROM source AS test
+
+COPY --from=development /node/node_modules /node/node_modules
+RUN npm run test && npm run lint
+
+FROM source AS production
+
+EXPOSE 3000
+CMD [ "npm", "start" ]
