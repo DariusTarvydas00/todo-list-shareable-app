@@ -9,7 +9,7 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./app:delegated
+      - ./node/app:delegated
       - /node/app/node_modules
     ports:
       - "3000-3000"
@@ -24,7 +24,7 @@ services:
     environment:
       - NODE_ENV=development
     volumes:
-      - ./app:delegated
+      - ./node/app:delegated
       - /node/app/node_modules
     ports:
       - "8081:8080"
