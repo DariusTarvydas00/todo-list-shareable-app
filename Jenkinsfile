@@ -14,6 +14,7 @@ pipeline {
             steps {
                 sh "docker-compose down"
                 sh "docker-compose build"
+                // docker compose build/up/down
             }
         }
     }
