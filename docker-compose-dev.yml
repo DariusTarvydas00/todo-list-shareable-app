@@ -4,7 +4,7 @@ services:
     image: todo_list_shareable_backend
     container_name: todo-nestjs
     build:
-      context: todo-list-shareable-backend2
+      context: todo-list-shareable-backend
       dockerfile: todo-list-shareable-backend/Dockerfile-dev
   vue:
     image: todo_list_shareable_frontend
