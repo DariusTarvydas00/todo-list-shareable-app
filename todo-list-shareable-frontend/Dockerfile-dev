@@ -1,15 +1,15 @@
-FROM node:18-alpine
+FROM codelabs-base:latest As development
 
-WORKDIR /app/vue
-
-COPY ./package*.json ./
-
-RUN npm install
+WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm run build
+RUN npm build
 
-EXPOSE 8081
+FROM codelabs-prod as prod
 
-CMD ["npm", "run", "serve"]
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app/dist ./dist
+
+CMD ["node", "dist/main"]
