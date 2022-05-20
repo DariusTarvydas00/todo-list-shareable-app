@@ -7,7 +7,7 @@ FROM base AS development
 WORKDIR /app
 COPY package*.json ./
 RUN NODE_ENV=development && npm ci && npm cache clean --force
-WORDIR /node/app
+WORKDIR /node/app
 EXPOSE 3000
 CMD ["npm", "start"]
 
