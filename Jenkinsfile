@@ -11,8 +11,8 @@ pipeline {
 
     stages {
         stage("Build project"){
-        parallel {
-            stage("Build backend"){
+        //parallel {
+            //stage("Build backend"){
                 //when {
                     //anyOf{
                     //    dir("todo-list-shareable-backend"){
@@ -20,15 +20,18 @@ pipeline {
                     //        changeset "tests/*"
                     //    }
                     //}
-                    steps {
-                        dir("todo-list-shareable-backend"){
-                            sh "docker build ."
-                        }
-                    }
+                    //steps {
+                      //  dir("todo-list-shareable-backend"){
+                     //      sh "docker build ."
+                      //  }
+                   // }
                 //}
-            }
-        }
+           // }
+        //}
             steps {
+               dir("todo-list-shareable-backend"){
+                                       sh "docker build ."
+                                    }
                 sh "make build-dev"
                 sh "make start"
                 //sh "docker-compose build --target development nestjs"
