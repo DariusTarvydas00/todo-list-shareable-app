@@ -38,9 +38,7 @@ ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 ENV PATH /node/node_modules/.bin:$PATH
 COPY --chown=node:node --from=development /node/node_modules /node/node_modules
-RUN \
-  npm run test && \
-  npm run lint
+RUN npm run test
 
 # Production stage
 # ---------------------------------------
