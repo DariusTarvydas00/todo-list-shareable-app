@@ -2,7 +2,7 @@
 .git
 .gitignore
 docker-compose*
--dev
+Dockerfile
 node_modules
 .env*
 .vscode
