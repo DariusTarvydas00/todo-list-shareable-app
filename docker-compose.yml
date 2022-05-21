@@ -4,6 +4,8 @@ services:
     build:
       context: todo-list-shareable-backend
       target: development
+      args:
+        - NODE_ENV=development
     environment:
       - NODE_ENV=development
     ports:
