@@ -14,7 +14,8 @@ RUN \
   npm ci && \
   npm cache clean --force
 EXPOSE 3000
-CMD ["npm", "start"]
+WORKDIR /node/app
+CMD ["node", "dist/main"]
 
 ## Development stage
 ## ---------------------------------------
