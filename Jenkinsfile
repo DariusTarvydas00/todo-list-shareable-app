@@ -11,6 +11,23 @@ pipeline {
 
     stages {
         stage("Build project"){
+        parallel {
+            stage("Build backend"){
+                when {
+                    //anyOf{
+                    //    dir("todo-list-shareable-backend"){
+                    //        changeset "src/*"
+                    //        changeset "tests/*"
+                    //    }
+                    //}
+                    steps {
+                        dir("todo-list-shareable-backend"){
+                            sh "docker build ."
+                        }
+                    }
+                }
+            }
+        }
             steps {
                 sh "make build-dev"
                 sh "make start"
