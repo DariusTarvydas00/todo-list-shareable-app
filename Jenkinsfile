@@ -13,8 +13,17 @@ pipeline {
         stage("Build project"){
             steps {
                 sh "docker-compose down"
-                sh "docker-compose up --build -d"
+                sh "docker-compose build --target development nestjs"
                 // docker compose build/up/down
+            }
+        }
+        stage("Unit Test"){
+            parallel{
+                stage("Unit test backend"){
+                    steps{
+                        sh "build-test nestjs"
+                    }
+                }
             }
         }
     }
