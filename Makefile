@@ -16,7 +16,7 @@ build-dev: ##@dev Build the application for dev
 	docker-compose build
 
 build-dev-no-cache: ##@dev Build the application for dev without using cache
-	docker compose build --no-cache
+	docker-compose build --no-cache
 
 build-test: ##@dev Build the application to run tests
 	docker build \
@@ -25,16 +25,16 @@ build-test: ##@dev Build the application to run tests
 		-t app-test:1.00 .
 
 start: ##@dev Start the development environment
-	docker compose up
+	docker-compose up
 
 start-detached: ##@dev Start the development environment (detached)
-	docker compose up -d
+	docker-compose up -d
 
 stop: ##@dev Stop the development environment
-	docker compose down
+	docker-compose down
 
 shell: ##@dev Go into the running container (the app name should match what's in docker-compose.yml)
-	docker compose exec app /bin/sh
+	docker-compose exec app /bin/sh
 
 ###################################################################################################
 ## HELP
