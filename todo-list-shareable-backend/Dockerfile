@@ -13,6 +13,7 @@ RUN \
     npm cache clean --force \
 
 WORKDIR /node/app
+RUN ls -al
 CMD ["npm", "start"]
 
 # Source stage
