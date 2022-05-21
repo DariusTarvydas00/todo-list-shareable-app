@@ -13,7 +13,7 @@ export COMPOSE_DOCKER_CLI_BUILD=1
 .PHONY: build-dev build-dev-no-cache build-test start start-detached stop shell
 
 build-dev: ##@dev Build the application for dev
-	docker compose build
+	docker-compose build
 
 build-dev-no-cache: ##@dev Build the application for dev without using cache
 	docker compose build --no-cache
