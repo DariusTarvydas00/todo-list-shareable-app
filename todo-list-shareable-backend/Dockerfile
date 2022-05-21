@@ -13,7 +13,7 @@ RUN \
   NODE_ENV=development && \
   npm ci && \
   npm cache clean --force \
-WORKDIR /node/app
+EXPOSE 3000
 CMD ["npm", "start"]
 
 ## Development stage
