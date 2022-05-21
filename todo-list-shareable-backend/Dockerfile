@@ -12,7 +12,7 @@ COPY --chown=node:node package*.json ./
 RUN \
   NODE_ENV=development && \
   npm ci && \
-  npm cache clean --force \
+  npm cache clean --force
 EXPOSE 3000
 CMD ["npm", "start"]
 
