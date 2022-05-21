@@ -1,7 +1,7 @@
 # Base stage
 # ---------------------------------------
 FROM node:16-alpine3.14 AS base
-WORKDIR /usr/src/app
+WORKDIR /node
 RUN chown node:node /node
 USER node
 
