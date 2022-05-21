@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage("Build project"){
             steps {
-                sh "make build-dev"
+                sh "docker compose build"
                 //sh "docker-compose build --target development nestjs"
                 // docker compose build/up/down
             }
