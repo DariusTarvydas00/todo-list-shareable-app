@@ -21,7 +21,7 @@ pipeline {
             parallel{
                 stage("Unit test backend"){
                     steps{
-                        sh "build-test nestjs"
+                        sh "make build-test nestjs"
                     }
                 }
             }
