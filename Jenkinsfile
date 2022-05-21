@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage("Build project"){
             steps {
-                sh "docker build --build-arg NODE_ENV=production --target=production -t app:1.00 ."
+                sh "docker-compose build --build-arg NODE_ENV=production --target=production -t app:1.00 ."
                 //sh "docker-compose build --target development nestjs"
                 // docker compose build/up/down
             }
