@@ -22,7 +22,7 @@ pipeline {
                         //}
                     }
                     steps {
-                        echo "asd"
+                        sh "docker-compose build nestjs_backend"
                     }
                     //when {
                         //anyOf {
