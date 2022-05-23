@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
       );
     },
     registered() {
-      console.log("Service worker has been registered.");
+      console.log("Servicse worker has been registered.");
     },
     cached() {
       console.log("Content has been cached for offline use.");
