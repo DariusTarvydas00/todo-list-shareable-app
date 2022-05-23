@@ -15,7 +15,10 @@ pipeline {
                 stage("Build back-end") {
                     when {
                         anyOf {
-                            changeset "todo-list-shareable-backend/src/*"
+                            dir("todo-list-shareable-backend"){
+                                changeset "/src/*"
+                            }
+                            //changeset "todo-list-shareable-backend/src/*"
                         }
                         //steps {
                            // echo "asd"
