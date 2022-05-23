@@ -9,10 +9,12 @@ pipeline {
             nodejs "Node"
         }
 
-    stage("Build project") {
-        steps{
-            dir("todo-list-shareable-backend"){
-                docker build
+    stages{
+        stage("Build project") {
+            steps{
+                dir("todo-list-shareable-backend"){
+                    docker build
+                }
             }
         }
     }
