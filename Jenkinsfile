@@ -17,9 +17,9 @@ pipeline {
                         anyOf {
                             changeset "todo-list-shareable-backend/src/*"
                         }
-                        steps {
-                            echo "asd"
-                        }
+                        //steps {
+                           // echo "asd"
+                        //}
                     }
                     //when {
                         //anyOf {
