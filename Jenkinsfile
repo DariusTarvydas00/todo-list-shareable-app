@@ -13,7 +13,7 @@ pipeline {
         stage("Build project") {
             steps{
                 dir("todo-list-shareable-backend"){
-                    docker build
+                    sh "docker build"
                 }
             }
         }
