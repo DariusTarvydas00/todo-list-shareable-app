@@ -32,7 +32,7 @@ pipeline {
                     }
                     steps {
                     echo "build front-end"
-                       // sh "docker-compose build nestjs_backend"
+                       // sh "docker-compose build vue_frontend"
                     }
                 }
             }

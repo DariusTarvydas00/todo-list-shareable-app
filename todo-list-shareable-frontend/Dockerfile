@@ -10,7 +10,7 @@ RUN npm run build
 FROM builde AS production
 WORKDIR /node
 COPY --from=development /node .
-EXPOSE 8081
+EXPOSE 8082
 CMD ["node", "dist/main"]
 
 # docker-build -t nest
