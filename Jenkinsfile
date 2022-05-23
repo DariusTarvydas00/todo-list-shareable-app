@@ -12,17 +12,12 @@ pipeline {
     stages{
         stage("Build project") {
             steps{
-                dir("todo-list-shareable-backend"){
-                    sh "docker build -t nestjs_backend ."
-                }
+                sh "docker-compose build"
             }
         }
         stage("Run") {
             steps{
-                dir("todo-list-shareable-backend"){
-                    sh "docker stop \$(docker ps -a -q)"
-                    sh "docker run -dp 3000:3000 nestjs_backend"
-                }
+                sh "docker-compose run"
             }
         }
     }
