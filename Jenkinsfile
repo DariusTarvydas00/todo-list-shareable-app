@@ -11,8 +11,20 @@ pipeline {
 
     stages{
         stage("Build project") {
-            steps{
-                sh "docker-compose build"
+            parallel{
+                stage("Build back-end"){
+                    when {
+                        anyOf{
+                            dir("todo-list-shareable-backend"){
+                                changeset "src/*"
+                                changeset "test/*"
+                            }
+                        }
+                    }
+                    steps{
+                        sh "docker-compose build nestjs"
+                    }
+                }
             }
         }
         stage("Run") {
