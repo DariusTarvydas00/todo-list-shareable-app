@@ -20,7 +20,7 @@ pipeline {
         stage("Run") {
             steps{
                 dir("todo-list-shareable-backend"){
-                    sh "docker stop nestjs_backend"
+                    sh "docker stop $(docker ps -a -q)"
                     sh "docker run -dp 3000:3000 nestjs_backend"
                 }
             }
