@@ -15,13 +15,15 @@ pipeline {
                 stage("Build back-end"){
                     when {
                         anyOf {
-                            dir("todo-list-shareable-backend"){
-                                changeset "src/*"
-                                changeset "test/*"
-                            }
+                            //dir("todo-list-shareable-backend"){
+                              //  changeset "src/*"
+                               // changeset "test/*"
+                            //}
+                            echo 'asd'
                         }
                         steps {
-                            sh "docker-compose build nestjs_backend"
+                        echo 'asdfsdf'
+                            //sh "docker-compose build nestjs_backend"
                         }
                     }
                 }
