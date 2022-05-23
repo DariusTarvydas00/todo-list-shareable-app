@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  nestjs_backen:
+  nestjs_backend:
     image: nestjs_backend
     build:
       context: todo-list-shareable-backend
