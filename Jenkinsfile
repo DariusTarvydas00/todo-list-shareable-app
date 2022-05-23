@@ -29,9 +29,7 @@ pipeline {
            // }
         //}
             steps {
-               dir("todo-list-shareable-backend"){
-                                       sh "docker build ."
-                                    }
+                sh "docker-compose build"
                 sh "make build-dev"
                 sh "make start"
                 //sh "docker-compose build --target development nestjs"
