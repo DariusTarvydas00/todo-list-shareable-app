@@ -19,10 +19,10 @@ pipeline {
                               //  changeset "src/*"
                                // changeset "test/*"
                             //}
-                            echo 'asd'
+                            echo "asd"
                         }
                         steps {
-                        echo 'asdfsdf'
+                        echo "afsdagfsdfg"
                             //sh "docker-compose build nestjs_backend"
                         }
                     }
