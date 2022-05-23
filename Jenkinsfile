@@ -17,5 +17,12 @@ pipeline {
                 }
             }
         }
+        stage("Run") {
+            steps{
+                dir("todo-list-shareable-backend"){
+                    sh "docker run"
+                }
+            }
+        }
     }
 }
