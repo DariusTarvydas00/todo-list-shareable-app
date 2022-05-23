@@ -11,8 +11,16 @@ pipeline {
 
     stages{
         stage("Build project") {
-            parallel{
-                stage("Build back-end"){
+            parallel {
+                stage("Build back-end") {
+                    when {
+                        anyOf {
+                            changeset "todo-list-shareable-backend/src/*"
+                        }
+                        steps {
+                            echo "asd"
+                        }
+                    }
                     //when {
                         //anyOf {
                             //dir("todo-list-shareable-backend"){
@@ -21,10 +29,10 @@ pipeline {
                             //}
                           //  echo "asd"
                        // }
-                        steps {
-                        echo "afsdagfsdfg"
+                       // steps {
+                       // echo "afsdagfsdfg"
                             //sh "docker-compose build nestjs_backend"
-                        }
+                       // }
                    // }
                 }
             }
