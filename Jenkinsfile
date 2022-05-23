@@ -20,9 +20,9 @@ pipeline {
                                 changeset "test/*"
                             }
                         }
-                    }
-                    steps{
-                        sh "docker-compose build nestjs"
+                        steps{
+                            sh "docker-compose build nestjs"
+                        }
                     }
                 }
             }
