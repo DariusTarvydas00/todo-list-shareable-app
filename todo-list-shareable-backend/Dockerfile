@@ -7,7 +7,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM builde AS production
+FROM development AS production
 WORKDIR /node
 COPY --from=development /node .
 EXPOSE 8081
