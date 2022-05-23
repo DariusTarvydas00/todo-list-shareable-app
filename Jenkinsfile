@@ -21,6 +21,9 @@ pipeline {
                            // echo "asd"
                         //}
                     }
+                    steps {
+                        echo "asd"
+                    }
                     //when {
                         //anyOf {
                             //dir("todo-list-shareable-backend"){
