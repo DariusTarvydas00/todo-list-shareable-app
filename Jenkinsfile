@@ -22,7 +22,7 @@ pipeline {
                         }
                     }
                     steps {
-                        sh "docker-compose build nestjs
+                        sh "docker-compose build nestjs_backend
                     }
                 }
             }
