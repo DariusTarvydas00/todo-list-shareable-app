@@ -12,10 +12,16 @@ ENV SERVER_PORT=8081
 ENV PATH /node/node_modules/.bin:$PATH
 EXPOSE $SERVER_PORT 9230
 COPY --chown=node:node package*.json ./
-RUN \
-  NODE_ENV=development && \
-  npm ci && \
-  npm cache clean --force
+RUN npm install
+WORKDIR npm install
+WORKDIR/app
+COPY . .
+ENV NODE_ENV=rpoduction
+CMD ["npm","start"]
+#RUN \
+#  NODE_ENV=development && \
+#  npm ci && \
+#  npm cache clean --force
 WORKDIR /node/app
 CMD [ "nodemon" ]
 

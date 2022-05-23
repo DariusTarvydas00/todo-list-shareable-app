@@ -58,3 +58,63 @@ services:
 #      - net
 #networks:
 #  net:
+#version: '3.4'
+#services:
+#  nestjs:
+#    image: todo-list-shareable-backend
+#    build:
+#      context: todo-list-shareable-backend
+#      target: ${NODE_ENV}
+#      args:
+#        - NODE_ENV=${NODE_ENV}
+#    environment:
+#      - NODE_ENV=${NODE_ENV}
+#      - SERVER_PORT=${SERVER_PORT}
+#    env_file:
+#      - todo-list-shareable-backend/environments/development.env
+#    ports:
+#      - "3000:${SERVER_PORT}"
+#      - "9229:9229"
+#    volumes:
+#      - .:/node/app:delegated
+#      - /node/app/node_modules
+##  nestjs:
+#    image: todo_list_shareable_backend_development
+#    container_name: todo-nestjs
+#    build:
+#      context: todo-list-shareable-backend
+#      target: ${NODE_ENV}
+#      args:
+#        - NODE_ENV=${NODE_ENV}
+#    environment:
+#      - NODE_ENV=${NODE_ENV}
+#      - SERVER_PORT=${SERVER_PORT}
+#    volumes:
+#      - .:/node/app:delegated
+#      - /node/app/node_modules
+#    ports:
+#      - "3000:${SERVER_PORT}"
+#      - "9229:9229"
+#    networks:
+#      - net
+#  vue:
+#    image: todo_list_shareable_frontend_development
+#    container_name: todo-vue
+#    build:
+#      context: todo-list-shareable-frontend
+#      target: ${NODE_ENV}
+#      args:
+#        - NODE_ENV=${NODE_ENV}
+#    environment:
+#      - NODE_ENV=${NODE_ENV}
+#      - SERVER_PORT=${SERVER_PORT}
+#    volumes:
+#      - .:/node/app:delegated
+#      - /node/app/node_modules
+#    ports:
+#      - "8081:${SERVER_PORT}"
+#      - "9230:9230"
+#    networks:
+#      - net
+#networks:
+#  net:
