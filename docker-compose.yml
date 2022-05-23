@@ -9,11 +9,5 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - type: volume
-      - source: nestjs
-      - target: /data
-      - volume:
-          nocopy: true
-      - type: bind
       - .:/app:delegated
       - /node/app/node_modules
