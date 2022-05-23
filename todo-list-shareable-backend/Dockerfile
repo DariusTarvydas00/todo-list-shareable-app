@@ -5,5 +5,6 @@ WORKDIR /node
 COPY package*.json ./
 RUN npm ci && npm cache clean --force
 WORKDIR /node/app
-EXPOSE 3000
 CMD ["npm", "start"]
+
+FROM builde AS development
