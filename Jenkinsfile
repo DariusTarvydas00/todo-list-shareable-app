@@ -65,8 +65,7 @@ pipeline {
         }
         stage("Run") {
             steps{
-            echo "asd"
-               // sh "docker-compose up -d"
+                sh "docker-compose up -d"
             }
         }
     }
