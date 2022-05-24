@@ -1,7 +1,7 @@
 FROM node:lts-alpine3.14 AS base
+RUN npm install -g http-server
 
 FROM base AS development
-RUN npm install -g http-server
 WORKDIR /usr/app/vue
 COPY package*.json ./
 RUN npm install
