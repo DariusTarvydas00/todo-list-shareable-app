@@ -19,12 +19,14 @@ pipeline {
             parallel {
                 stage("Unit Test Back-End") {
                     steps {
-                        sh "npm run test"
+                    echo "run test be"
+                        //sh "npm run test"
                     }
                 }
                 stage("Unit Test Front End"){
                     steps {
-                        sh "npm run test:unit"
+                    echo "test fE"
+                      //  sh "npm run test:unit"
                     }
                 }
             }
