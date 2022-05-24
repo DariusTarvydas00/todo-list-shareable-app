@@ -19,8 +19,11 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: db
+    restart: always
     ports:
-      - "35000:3000"
+      - "5432:3000"
+    volumes:
+      - db:/var/lib/postgresql/data
 
   postgres_admin:
     image: dpage/pgadmin4:4.28
@@ -45,3 +48,6 @@ services:
       - .:/app
       - /app/node)modules
 
+volumes:
+  db:
+    driver: local
