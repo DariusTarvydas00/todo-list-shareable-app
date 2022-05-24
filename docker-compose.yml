@@ -65,14 +65,8 @@ services:
       dockerfile: Dockerfile
     environment:
       - NODE_ENV=development
-    expose:
-      - "80"
-      - "8001"
-      - "8080"
     ports:
       - "8082:8080"
-      - "8083:80"
-      - "8084:8001"
     volumes:
       - .:/app
       - /app/node_modules
