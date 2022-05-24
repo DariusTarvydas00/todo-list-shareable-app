@@ -11,7 +11,7 @@ FROM development AS production
 WORKDIR /node
 COPY --from=development /node .
 EXPOSE 8082
-CMD ["node", "dist/main"]
+CMD ["node", "dist"]
 
 # docker-build -t nest
 # docker run nest
