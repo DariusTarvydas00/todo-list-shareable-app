@@ -4,7 +4,7 @@ RUN npm install -g http-server
 FROM base AS development
 WORKDIR /app
 ENV PATH  /app/node_modules/.bin:$PATH
-COPY package*.json /app/package*.json
+COPY package*.json /app/
 RUN npm install && npm install @vue/cli@3.7.0 -g
 CMD ["npm", "run", "serve"]
 
