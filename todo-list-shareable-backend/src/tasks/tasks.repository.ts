@@ -3,7 +3,6 @@ import {Task} from "./task.entity";
 import {CreateTaskDto} from "./dto/create-task.dto";
 import {TaskStatus} from "./task-status.enum";
 import {GetTasksFilterDto} from "./dto/get-tasks-filter.dto";
-import {query} from "express";
 
 @EntityRepository(Task)
 export class TasksRepository extends Repository<Task>{
@@ -16,8 +15,7 @@ export class TasksRepository extends Repository<Task>{
         if (search) {
             query.andWhere('LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search)'), { search: '%${search}%' }
         }
-        const tasks = await query.getMany();
-        return tasks;
+        return await query.getMany();
     }
 
     async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
