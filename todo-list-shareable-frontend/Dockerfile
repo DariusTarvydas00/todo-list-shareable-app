@@ -9,8 +9,8 @@ RUN npm install && npm install @vue/cli@3.7.0 -g
 CMD ["npm", "run", "serve"]
 
 FROM development AS production
-WORKDIR /usr/app/vue
-COPY --from=development /usr/app/vue .
+WORKDIR /app
+COPY --from=development /app .
 EXPOSE 8082
 CMD [ "http-server", "dist" ]
 
