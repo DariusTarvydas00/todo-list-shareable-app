@@ -11,19 +11,7 @@ pipeline {
 
     stages{
         stage("Build Project") {
-            parallel {
-                stage("Build Back End") {
-                    steps {
-                        sh "docker-compose build nestjs_backend"
-                    }
-                }
-                stage("Build Front End"){
-                    steps {
-                    echo "build front-end"
-                        sh "docker-compose build vue_frontend"
-                    }
-                }
-            }
+            sh "docker-compose -f docker-compose-dev.yml build"
         }
         stage("Unit Test"){
             parallel {
@@ -39,7 +27,7 @@ pipeline {
                 }
             }
         }
-        stage("Run") {
+        stage("Run in Development Environment") {
             steps{
                 sh "docker-compose down"
                 sh "docker-compose up -d"
