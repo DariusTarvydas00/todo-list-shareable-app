@@ -2,11 +2,12 @@ FROM node:lts-alpine3.14 AS base
 RUN npm install -g http-server
 
 FROM base AS development
-WORKDIR /usr/app/vue
-COPY package*.json ./
-RUN npm install
+WORKDIR /app
+ENV PATH  /app/node)modules/.bin:$PATH
+COPY package*.json /app/package*.json
+RUN npm install && npm install @vue/cli@3.7.0 -g
 COPY . .
-RUN npm run build
+CMD ["npm", "run", "serve"]
 
 FROM development AS production
 WORKDIR /usr/app/vue

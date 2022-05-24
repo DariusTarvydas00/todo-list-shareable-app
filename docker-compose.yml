@@ -41,4 +41,7 @@ services:
       - NODE_ENV=development
     ports:
       - "8082:8080"
+    volumes:
+      - .:/app
+      - /app/node)modules
 
