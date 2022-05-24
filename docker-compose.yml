@@ -75,7 +75,7 @@ services:
       - "8084:8001"
     volumes:
       - .:/app
-      - /app/node)modules
+      - /app/node_modules
 
 volumes:
   db:
