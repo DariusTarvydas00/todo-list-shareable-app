@@ -10,7 +10,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/node/app:delegated
+      - .nestjs:/node/app:delegated
       - /node/app/node_modules
   vue_frontend:
     image: todo-list-shareable-frontend
@@ -21,3 +21,4 @@ services:
       - NODE_ENV=development
     ports:
       - "8082:8080"
+
