@@ -9,7 +9,7 @@ RUN npm run build
 
 FROM development AS production
 WORKDIR /usr/app/nestjs
-COPY --from=development /node .
+COPY --from=development /usr/app/nestjs .
 EXPOSE 8081
 CMD ["node", "dist/main"]
 
