@@ -5,7 +5,7 @@ FROM base AS development
 WORKDIR /usr/app/vue
 COPY package*.json ./
 RUN npm install
-COPY ./usr/app/vue/ .
+COPY . .
 CMD ["npm", "run", "serve"]
 
 FROM development AS production
