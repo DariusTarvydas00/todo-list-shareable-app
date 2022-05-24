@@ -13,7 +13,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASS: postgres
       POSTGRES_DB: todolist
-      POSTGRES_SYNC: false
+       - POSTGRES_SYNC = false
       JWT_SECRET: anyKey
       POSTGRES_PORT: 5432
       APP_EXPIRES: 3600
