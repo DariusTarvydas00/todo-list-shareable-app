@@ -18,10 +18,8 @@ export class TasksService {
         }
         if (search) {
             tasks = tasks.filter((task) => {
-                if (task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search)) {
-                    return true;
-                }
-                return false;
+                return task.title.toLowerCase().includes(search) || task.description.toLowerCase().includes(search);
+
             });
         }
         return tasks
@@ -45,7 +43,8 @@ export class TasksService {
         return found
     }
     deleteTask(id:string): void{
-        this.tasks = this.tasks.filter((task) => task.id !==id);
+        const found = this.getTaskById(id);
+        this.tasks = this.tasks.filter((task) => task.id !==found.id);
     }
     updateTaskStatus(id:string, status:TaskStatus) {
         const task = this.getTaskById(id);
