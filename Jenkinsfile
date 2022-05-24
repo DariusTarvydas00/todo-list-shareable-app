@@ -11,6 +11,9 @@ pipeline {
 
     stages{
         stage("Build Project") {
+            steps {
+                    sh "docker-compose -f docker-compose-dev.yml build"
+            }
             sh "docker-compose -f docker-compose-dev.yml build"
         }
         stage("Unit Test"){
