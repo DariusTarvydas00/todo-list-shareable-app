@@ -4,7 +4,6 @@ FROM base AS development
 WORKDIR /usr/app/nestjs
 COPY package*.json ./
 RUN npm install
-COPY . .
 RUN npm run build
 
 FROM development AS production
