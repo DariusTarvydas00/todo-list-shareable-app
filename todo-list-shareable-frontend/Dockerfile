@@ -2,7 +2,7 @@ FROM node:lts-alpine3.14 AS base
 RUN npm install -g http-server
 
 FROM base AS development
-WORKDIR /app/vue
+WORKDIR /app
 ENV PATH  /app/node_modules/.bin:$PATH
 COPY package*.json ./
 RUN npm install && npm install @vue/cli@3.7.0 -g
@@ -10,8 +10,8 @@ COPY . .
 CMD ["npm", "run", "serve"]
 
 FROM development AS production
-WORKDIR /app/vue
-COPY --from=development /app/vue .
+WORKDIR /app
+COPY --from=development /app .
 CMD [ "http-server", "dist" ]
 
 # docker-build -t nest
