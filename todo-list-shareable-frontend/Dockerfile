@@ -3,7 +3,7 @@ RUN npm install -g http-server
 
 FROM base AS development
 WORKDIR /usr/app/vue
-COPY package*.json ./usr/app/vue/
+COPY package*.json .
 RUN npm install
 COPY ./usr/app/vue/ .
 CMD ["npm", "run", "serve"]
