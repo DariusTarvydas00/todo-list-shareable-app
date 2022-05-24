@@ -30,13 +30,10 @@ pipeline {
                       //      changeset "todo-list-shareable-frontend/tests/**"
                       //  }
                   //  }
-                  steps {
-                                          sh "docker-compose build vue_frontend"
-                                      }
-                  //  steps {
+                    steps {
                     echo "build front-end"
-                       // sh "docker-compose build vue_frontend"
-                  //  }
+                        sh "docker-compose build vue_frontend"
+                    }
                 }
             }
         }
