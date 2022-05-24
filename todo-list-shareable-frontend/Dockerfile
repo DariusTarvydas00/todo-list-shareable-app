@@ -6,7 +6,7 @@ WORKDIR /usr/app/vue
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm build
+RUN npm run build
 CMD ["npm", "run", "serve"]
 
 FROM development AS production
