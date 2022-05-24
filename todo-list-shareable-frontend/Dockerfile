@@ -6,7 +6,6 @@ WORKDIR /app
 ENV PATH  /app/node)modules/.bin:$PATH
 COPY package*.json /app/package*.json
 RUN npm install && npm install @vue/cli@3.7.0 -g
-COPY . .
 CMD ["npm", "run", "serve"]
 
 FROM development AS production
