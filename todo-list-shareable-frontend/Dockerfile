@@ -2,15 +2,15 @@ FROM node:lts-alpine3.14 AS base
 
 FROM base AS development
 RUN npm install -g http-server
-WORKDIR /node
+WORKDIR /usr/app/vue
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
 FROM development AS production
-WORKDIR /node
-COPY --from=development /node .
+WORKDIR /usr/app/vue
+COPY --from=development /usr/app/vue .
 EXPOSE 8082
 CMD [ "http-server", "dist" ]
 

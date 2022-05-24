@@ -1,14 +1,14 @@
 FROM node:lts-alpine3.14 AS base
 
 FROM base AS development
-WORKDIR /node
+WORKDIR /usr/app/nestjs
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
 FROM development AS production
-WORKDIR /node
+WORKDIR /usr/app/nestjs
 COPY --from=development /node .
 EXPOSE 8081
 CMD ["node", "dist/main"]
