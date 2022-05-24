@@ -11,8 +11,17 @@ pipeline {
 
     stages{
         stage("Build Project") {
-            steps {
-                    sh "docker-compose -f docker-compose-dev.yml build"
+            parallel {
+                stage ("Build Back End ") {
+                    steps {
+                        sh "docker-compose build nestjs_backend"
+                    }
+                }
+                stage ("Build Front End") {
+                    steps {
+                        sh "docker-compose build vue_frontend"
+                    }
+                }
             }
         }
         stage("Unit Test"){
