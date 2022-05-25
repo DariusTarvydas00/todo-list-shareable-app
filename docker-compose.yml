@@ -60,6 +60,7 @@ services:
       - ./pgadmin-data:/var/lib/pgadmin
     networks:
       - net
+    tty: true
 
   vue_frontend:
     image: todo-list-shareable-frontend
