@@ -71,6 +71,8 @@ services:
     volumes:
       - ./usr/app/vue:/app
       - /usr/app/vue/node_modules
+    networks:
+      - net
 
 volumes:
   db:

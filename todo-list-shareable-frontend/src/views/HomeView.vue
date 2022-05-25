@@ -1,13 +1,8 @@
 <template>
+  <div class="about">
+    <h1>This is an home page</h1>
+  </div>
 </template>
-
-<script lang="ts">
-import NavBar from "@/components/NavBar.vue";
-
-export default {
-  components: {NavBar}
-}
-</script>
 
 <style>
 </style>
