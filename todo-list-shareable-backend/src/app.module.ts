@@ -10,7 +10,7 @@ const ENV = process.env.NODE_ENV;
 @Module({
     imports: [
         ConfigModule.forRoot({
-            envFilePath: [`./environments/.env.stage.${process.env.STAGE}`],
+            envFilePath: [`.env.stage.${process.env.STAGE}`],
             validationSchema: configValidationSchema,
         }),
         TasksModule,
