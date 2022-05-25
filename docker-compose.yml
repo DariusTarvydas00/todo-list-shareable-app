@@ -55,7 +55,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.dk
       PGADMIN_DEFAULT_PASSWORD: password
     ports:
-      - "5050:5454"
+      - "5454:5050"
     volumes:
       - ./pgadmin-data:/var/lib/pgadmin
     networks:
