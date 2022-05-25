@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/register",
-    name: "register",
+    name: "Register",
     component: Register,
   },
   {
@@ -38,8 +38,6 @@ router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/register'];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('token');
-
-  //@todo Confirm token here on backend?
 
   if (authRequired && !loggedIn) {
     next('/login');

@@ -4,10 +4,13 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule} from "@nestjs/config";
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AuthController],
+  providers: [AppService, AuthService],
   imports: [TasksModule,
       ConfigModule.forRoot({isGlobal:true}),
     TypeOrmModule.forRoot({
@@ -20,6 +23,8 @@ import {ConfigModule} from "@nestjs/config";
     database: 'task-management',
     autoLoadEntities: true,
     synchronize: true
-  })],
+  }),
+    AuthModule
+  ],
 })
 export class AppModule {}
