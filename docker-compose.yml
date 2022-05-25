@@ -46,33 +46,6 @@ services:
     networks:
       - net
 
-  postgres_admin:
-    image: dpage/pgadmin4
-    restart: always
-    container_name: nest-pgadmin4
-    depends_on:
-      - postgres
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.dk
-      PGADMIN_DEFAULT_PASSWORD: password
-    expose:
-      - 53603
-      - 5050
-      - 80
-      - 5454
-      - 5432
-    ports:
-      - "53603:53603"
-      - "50501:5050"
-      - "51051:80"
-      - "51455:5454"
-      - "51456:5432"
-    volumes:
-      - ./pgadmin-data:/var/lib/pgadmin
-    networks:
-      - net
-    tty: true
-
   vue_frontend:
     image: todo-list-shareable-frontend
     build:
