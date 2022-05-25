@@ -57,6 +57,8 @@ services:
       - "5050:80"
     volumes:
       - ./pgadmin-data:/var/lib/pgadmin
+    networks:
+      - net
 
   vue_frontend:
     image: todo-list-shareable-frontend
@@ -71,6 +73,7 @@ services:
     volumes:
       - ./usr/app/vue:/app
       - /usr/app/vue/node_modules
+    networks:
     - net
 
 volumes:
@@ -80,3 +83,86 @@ volumes:
 
 networks:
   net:
+
+#    version: '3.4'
+    #    services:
+    #      nestjs_backend:
+    #        image: nestjs_backend
+    #        build:
+    #          context: todo-list-shareable-backend
+    #          dockerfile: Dockerfile
+    #        environment:
+    #          DATABASE_URL: postgres://user:password@postgres:5432/db
+    #          NODE_ENV: development
+    #          DB_TYPE: postgres
+    #          POSTGRES_HOST: postgres-db
+    #          POSTGRES_USER: postgres
+    #          POSTGRES_PASS: postgres
+    #          POSTGRES_DB: todolist
+    #            - POSTGRES_SYNC = false
+    #          JWT_SECRET: anyKey
+    #          POSTGRES_PORT: 5432
+    #          APP_EXPIRES: 3600
+    #          APP_PORT: 3000
+    #        ports:
+    #          - "3000:3000"
+    #        volumes:
+    #          - .nestjs:/node/app:delegated
+    #          - /node/app/node_modules
+    #        container_name: nestjs-backend
+    #        depends_on:
+    #          - postgres
+    #        networks:
+    #          - net
+    #
+    #      postgres:
+    #        image: postgres:14.3-alpine
+    #        restart: always
+    #        environment:
+    #          POSTGRES_USER: user
+    #          POSTGRES_PASSWORD: password
+    #          POSTGRES_DB: db
+    #        container_name: postgres-db
+    #        ports:
+    #          - "5432:5432"
+    #        volumes:
+    #          - db:/var/lib/postgresql/data
+    #        networks:
+    #          - net
+    #
+    #      postgres_admin:
+    #        image: dpage/pgadmin4:4.28
+    #        restart: always
+    #        container_name: nest-pgadmin4
+    #        depends_on:
+    #          - postgres
+    #        environment:
+    #          PGADMIN_DEFAULT_EMAIL: admin@admin.dk
+    #          PGADMIN_DEFAULT_PASSWORD: password
+    #        ports:
+    #          - "8089:80"
+    #        volumes:
+    #          - ./pgadmin-data:/var/lib/pgadmin
+    #
+    #      vue_frontend:
+    #        image: todo-list-shareable-frontend
+    #        build:
+    #          context: todo-list-shareable-frontend
+    #          dockerfile: Dockerfile
+    #        environment:
+    #          - NODE_ENV=development
+    #        ports:
+    #          - "8083:8080"
+    #        volumes:
+    #          - ./usr/app/vue:/app
+    #          - /usr/app/vue/node_modules
+    #        networks:
+    #          - net
+    #
+    #    volumes:
+    #      db:
+    #        driver: local
+    #      pgadmin-data:
+    #
+    #    networks:
+    #      net:
