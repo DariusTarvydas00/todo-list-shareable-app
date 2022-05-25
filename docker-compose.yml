@@ -14,7 +14,7 @@ services:
       POSTGRES_HOST: postgres-db
       POSTGRES_USER: postgres
       POSTGRES_PASS: postgres
-      POSTGRES_DB: todolist
+      POSTGRES_DB: db
        - POSTGRES_SYNC = false
       JWT_SECRET: anyKey
       POSTGRES_PORT: 5432
@@ -34,8 +34,8 @@ services:
     image: postgres:14.3-alpine
     restart: always
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_DB: db
     container_name: postgres-db
     ports:
