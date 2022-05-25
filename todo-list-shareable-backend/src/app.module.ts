@@ -11,7 +11,7 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService],
-  imports: [TasksModule,
+  imports: [TasksModule,AuthModule,
       ConfigModule.forRoot({isGlobal:true}),
     TypeOrmModule.forRoot({
     type: 'postgres',
@@ -24,7 +24,6 @@ import { AuthModule } from './auth/auth.module';
     autoLoadEntities: true,
     synchronize: true
   }),
-    AuthModule
   ],
 })
 export class AppModule {}
