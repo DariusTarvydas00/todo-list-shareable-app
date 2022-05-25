@@ -4,14 +4,12 @@ import { AppService } from './app.service';
 import { TasksModule } from './tasks/tasks.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule} from "@nestjs/config";
-import { AuthService } from './auth/auth.service';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
-  imports: [TasksModule,AuthModule,
+  controllers: [AppController],
+  providers: [AppService],
+  imports: [TasksModule,
       ConfigModule.forRoot({isGlobal:true}),
     TypeOrmModule.forRoot({
     type: 'postgres',
@@ -24,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
     autoLoadEntities: true,
     synchronize: true
   }),
+    AuthModule,
   ],
 })
 export class AppModule {}
