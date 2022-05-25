@@ -22,8 +22,8 @@ services:
       APP_PORT: 3000
     ports:
       - "3000:3000"
-    volumes:
-      - /node/app/node_modules
+#    volumes:
+#      - /node/app/node_modules
     container_name: nestjs-backend
     depends_on:
       - postgres
@@ -41,8 +41,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
       PGDATA: /data/postgres
-    volumes:
-      - db:/var/lib/postgresql/data
+#    volumes:
+#      - db:/var/lib/postgresql/data
     networks:
       - net
 
@@ -56,16 +56,16 @@ services:
     ports:
       - "8082:8081"
       - "8083:8080"
-    volumes:
-      - ./usr/app/vue:/app
-      - /usr/app/vue/node_modules
+#    volumes:
+#      - ./usr/app/vue:/app
+#      - /usr/app/vue/node_modules
     networks:
     - net
 
-volumes:
-  db:
-    driver: local
-  pgadmin-data:
+#volumes:
+#  db:
+#    driver: local
+#  pgadmin-data:
 
 networks:
   net:
