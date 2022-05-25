@@ -54,7 +54,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.dk
       PGADMIN_DEFAULT_PASSWORD: password
     ports:
-      - "8089:80"
+      - "5050:80"
     volumes:
       - ./pgadmin-data:/var/lib/pgadmin
 
@@ -66,12 +66,12 @@ services:
     environment:
       - NODE_ENV=development
     ports:
+      - "8082:8081"
       - "8083:8080"
     volumes:
       - ./usr/app/vue:/app
       - /usr/app/vue/node_modules
-    networks:
-      - net
+    - net
 
 volumes:
   db:
