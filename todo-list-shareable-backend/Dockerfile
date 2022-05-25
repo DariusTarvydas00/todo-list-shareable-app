@@ -5,11 +5,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-
-FROM node:lts-alpine3.14
-WORKDIR /app
-COPY --from=builder /app ./
-CMD ["npm", "run", "start:prod"]
+#
+#FROM node:lts-alpine3.14
+#WORKDIR /app
+#COPY --from=builder /app ./
+#CMD ["npm", "run", "start:prod"]
 
 #FROM node:lts-alpine3.14 AS development
 #RUN mkdir /app
