@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
+CMD ["npm","run:dev"]
 
 FROM development AS production
 WORKDIR /usr/app/nestjs
