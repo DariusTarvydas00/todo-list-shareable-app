@@ -5,7 +5,10 @@ services:
     build:
       context: todo-list-shareable-backend
       dockerfile: Dockerfile
+    env_file:
+      - ./todo-list-shareable-backend/.env.stage.dev
     environment:
+
       DATABASE_URL: postgres://user:password@postgres:5432/db
       NODE_ENV: development
       DB_TYPE: postgres
