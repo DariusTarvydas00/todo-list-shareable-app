@@ -46,7 +46,7 @@ services:
       - net
 
   postgres_admin:
-    image: dpage/pgadmin4:4.28
+    image: dpage/pgadmin4
     restart: always
     container_name: nest-pgadmin4
     depends_on:
@@ -55,8 +55,9 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.dk
       PGADMIN_DEFAULT_PASSWORD: password
     ports:
+      - "53603:53603"
       - "5050:5050"
-      - "5454:80"
+      - "80:80"
       - "5455:5454"
       - "5456:5432"
     volumes:
