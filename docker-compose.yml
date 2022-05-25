@@ -54,11 +54,11 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.dk
       PGADMIN_DEFAULT_PASSWORD: password
-    expose:
-      - 5454
     ports:
+      - "5050:5050"
       - "5454:80"
       - "5455:5454"
+      - "5456:5432"
     volumes:
       - ./pgadmin-data:/var/lib/pgadmin
     networks:
