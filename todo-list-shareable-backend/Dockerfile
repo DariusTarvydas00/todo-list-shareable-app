@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.14 AS builder
+FROM node:lts-alpine3.14 AS build
 WORKDIR /app
 COPY ./package.json ./
 RUN npm install
@@ -6,7 +6,7 @@ COPY . .
 RUN npm run build
 CMD ["npm", "run", "start:dev"]
 
-#
+
 #FROM node:lts-alpine3.14
 #WORKDIR /app
 #COPY --from=builder /app ./

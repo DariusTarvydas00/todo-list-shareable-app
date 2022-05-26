@@ -14,7 +14,10 @@ pipeline {
             parallel {
                 stage ("Build Back End ") {
                     steps {
-                        sh "docker-compose build nestjs_backend"
+                        dif ("todo-list-shareable-backend"){
+                            sh "docker build ."
+                        }
+                        //sh "docker-compose build nestjs_backend"
                     }
                 }
                 stage ("Build Front End") {
