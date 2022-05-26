@@ -34,7 +34,7 @@ pipeline {
             parallel {
                 stage("Unit Test Back-End") {
                     steps {
-                        //dir ("todo-list-shareable-frontend"){
+                        dir ("todo-list-shareable-frontend"){
                           //  sh "npm run test"
                           echo "tessting"
                         }
@@ -52,8 +52,8 @@ pipeline {
         }
         stage("Setup manual test env"){
             steps{
-                sh "docker-compose --env-file environments/test-manual.env down"
-                sh "docker-compose --env-file environments/test-manual.env up -d"
+                //sh "docker-compose --env-file environments/test-manual.env down"
+                //sh "docker-compose --env-file environments/test-manual.env up -d"
             }
         }
         stage("Run in Development Environment") {
