@@ -8,10 +8,10 @@ async function bootstrap() {
   const logger = new Logger();
   const app = await NestFactory.create(AppModule, {cors:true});
   app.enableCors({
-    allowedHeaders: '*',
-    origin: '*',
+    allowedHeaders: ['content-type'],
+    origin: 'http://localhost:3000',
     credentials: true,
-  })
+  });
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(3000);
