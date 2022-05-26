@@ -5,7 +5,7 @@ services:
     image: 42-node
     build:
       context: ./
-      dockerfile: Dockerfile.42-node
+      dockerfile: Dockerfile
     volumes:
       - ./todo-list-shareable-backend/:/app
     ports:
