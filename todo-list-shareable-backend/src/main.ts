@@ -8,11 +8,16 @@ import { cors } from 'cors'
 async function bootstrap() {
   const logger = new Logger();
   const app = await NestFactory.create(AppModule, {cors: true});
-  app.enableCors({
-    allowedHeaders: ['content-type'],
-    origin: 'http://161.97.99.214:3000',
-    credentials: true,
-  });
+  const options = {
+    "origin":true,  // attempted "origin":["http://localhost:3000"]
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 200,
+    "credentials":true,
+    "allowedHeaders": "Content-Type, Accept,Authorization",
+
+  }
+  app.use(cors(options))
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(3000);

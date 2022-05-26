@@ -17,8 +17,8 @@ pipeline {
                        // dir ("todo-list-shareable-backend"){
                         //    sh "docker build ."
                         //}
-                        //sh "docker-compose build nestjs_backend"
-                        echo "asd"
+                        sh "docker-compose "ENABLE_CORS=true" build nestjs_backend"
+                        //echo "asd"
                     }
                 }
                 stage ("Build Front End") {
@@ -26,7 +26,7 @@ pipeline {
                       //  dir ("todo-list-shareable-frontend"){
                        //     sh "docker build ."
                       //  }
-                        sh "docker-compose build"
+                        sh "docker-compose build vue_frontend"
                     }
                 }
             }
