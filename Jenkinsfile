@@ -14,7 +14,7 @@ pipeline {
             parallel {
                 stage ("Build Back End ") {
                     steps {
-                        dif ("todo-list-shareable-backend"){
+                        dir ("todo-list-shareable-backend"){
                             sh "docker build ."
                         }
                         //sh "docker-compose build nestjs_backend"
@@ -22,7 +22,10 @@ pipeline {
                 }
                 stage ("Build Front End") {
                     steps {
-                        sh "docker-compose build vue_frontend"
+                        dir ("todo-list-shareable-frontend"){
+                            sh "docker build ."
+                        }
+                        //sh "docker-compose build vue_frontend"
                     }
                 }
             }
@@ -31,14 +34,18 @@ pipeline {
             parallel {
                 stage("Unit Test Back-End") {
                     steps {
-                    echo "run test be"
-                        //sh "npm run test"
+                        dir ("todo-list-shareable-frontend"){
+                            sh "npm run test"
+                        }
+                      //sh "docker-compose build vue_frontend"
                     }
                 }
                 stage("Unit Test Front End"){
                     steps {
-                    echo "test fE"
-                      //  sh "npm run test:unit"
+                        dir ("todo-list-shareable-frontend"){
+                            sh "npm run test:unit"
+                        }
+                      //sh "docker-compose build vue_frontend"
                     }
                 }
             }
