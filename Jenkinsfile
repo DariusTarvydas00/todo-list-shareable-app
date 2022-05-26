@@ -52,6 +52,7 @@ pipeline {
         }
         stage("Setup manual test env"){
             steps{
+            echo "test"
                 //sh "docker-compose --env-file environments/test-manual.env down"
                 //sh "docker-compose --env-file environments/test-manual.env up -d"
             }
