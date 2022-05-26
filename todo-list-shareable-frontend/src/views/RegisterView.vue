@@ -28,6 +28,7 @@
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
+
 export default({
   data(){
     return{
@@ -41,13 +42,11 @@ export default({
     back(){
       this.$router.push({ name: 'Login' });
     },
-    signup(){
-        console.log(this.hostname)
-      console.log((this.username))
-        if(this.checkValidation()){
+    async signup(){
+      try {
           axios.post(this.hostname + "/auth/signup",{
-            email: this.user.email,
-            password: this.user.password,
+            username: "asd@asd.lt",
+            password: "asd123123",
           })
               .then(response => {
                 if (response.status) {
@@ -64,33 +63,37 @@ export default({
                   Swal.fire(error.response.data);
                 }
               });
-        }
+      } catch (e) {
+        console.log(e)
+      }
     },
-    checkValidation(){
-      if(!this.user.email){
-        this.$refs.email.focus();
-        Swal.fire("Give email !");
-        return;
-      }
-      if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.email)){
-        this.$refs.email.focus();
-        Swal.fire("Invalid email !");
-        return;
-      }
-      if(!this.user.password){
-        this.$refs.psw.focus();
-        Swal.fire("Give password !");
-        return;
-      }
-      if(this.user.password != this.user.repeatPassword){
-        this.$refs.psw.focus();
-        Swal.fire("Password and repeat password mismatched !");
-        return;
-      }
-      return true;
-    },
+    // checkValidation(){
+    //   if(!this.user.email){
+    //     this.$refs.email.focus();
+    //     Swal.fire("Give email !");
+    //     return;
+    //   }
+    //   if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.email)){
+    //     this.$refs.email.focus();
+    //     Swal.fire("Invalid email !");
+    //     return;
+    //   }
+    //   if(!this.user.password){
+    //     this.$refs.psw.focus();
+    //     Swal.fire("Give password !");
+    //     return;
+    //   }
+    //   if(this.user.password != this.user.repeatPassword){
+    //     this.$refs.psw.focus();
+    //     Swal.fire("Password and repeat password mismatched !");
+    //     return;
+    //   }
+    //   return true;
+    // },
   }
 })
+
+
 </script>
 
 <style scoped>

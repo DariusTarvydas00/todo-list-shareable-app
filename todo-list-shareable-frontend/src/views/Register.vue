@@ -46,21 +46,19 @@ export default {
     return {
       avatarPreview: null,
       form: {
-        name: '',
         username: '',
-        email: '',
         password: '',
-        avatar: ''
       }
     }
   },
   methods: {
     async register () {
-      await this.$store.dispatch('auth/singin', this.form)
+      await this.$store.dispatch('auth/singup', this.form)
+      console.log(this.form)
       this.$router.push('/')
     },
     async registerWithGoogle () {
-      await this.$store.dispatch('auth/signInWithGoogle')
+      await this.$store.dispatch('auth/authsignup')
       this.$router.push('/')
     },
     handleImageUpload (e) {
