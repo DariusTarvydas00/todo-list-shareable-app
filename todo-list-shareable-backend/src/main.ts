@@ -11,7 +11,7 @@ async function bootstrap() {
   const corsOptions: CorsOptions = {
     allowedHeaders: ['origin', 'x-requested-with', 'content-type', 'accept', 'authorization'],
     credentials: true,
-    origin: ['http://localhost:3001', 'http://localhost:3000'],
+    origin: ['http://161.97.99.214:3001', 'http://161.97.99.214:3000'],
   }
   app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
