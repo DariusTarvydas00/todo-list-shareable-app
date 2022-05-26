@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import {ValidationPipe} from "@nestjs/common";
 import {TransformInterceptor} from "./transform.interceptor";
 import { Logger } from '@nestjs/common'
-import {config} from "rxjs";
 
 async function bootstrap() {
   const logger = new Logger();

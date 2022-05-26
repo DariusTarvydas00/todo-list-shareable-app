@@ -41,28 +41,32 @@ export default({
     back(){
       this.$router.push({ name: 'Login' });
     },
-    signup(){
-      console.log(this.hostname)
-      if(this.checkValidation()){
-        axios.post(this.hostname + "/auth/signup",{
-          email: this.user.email,
-          password: this.user.password,
-        })
-            .then(response => {
-              if (response.status) {
-                Swal.fire("Successfully registered")
-                    .then(() => {
-                      this.back();
-                    });
-              }else{
-                Swal.fire("Error : Something went wrong.");
-              }
-            })
-            .catch(error => {
-              if (error.response) {
-                Swal.fire(error.response.data);
-              }
-            });
+    async signup(){
+      try {
+        console.log(this.hostname)
+        if(this.checkValidation()){
+          let response = await axios.post(this.hostname + "/auth/signup",{
+            email: this.user.email,
+            password: this.user.password,
+          })
+              .then(response => {
+                if (response.status) {
+                  Swal.fire("Successfully registered")
+                      .then(() => {
+                        this.back();
+                      });
+                }else{
+                  Swal.fire("Error : Something went wrong.");
+                }
+              })
+              .catch(error => {
+                if (error.response) {
+                  Swal.fire(error.response.data);
+                }
+              });
+        }
+      } catch (err) {
+        console.log(err)
       }
     },
     checkValidation(){
