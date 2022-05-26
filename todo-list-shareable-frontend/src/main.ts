@@ -6,5 +6,5 @@ import store from "./store";
 import { createPinia } from 'pinia'
 
 const app = createApp(App)
-app.config.globalProperties.hostname = "http://161.97.99.214:3000"
+app.config.globalProperties.hostname = "http://localhost:3000"
 app.use(store).use(router).use(createPinia()).mount("#app");
