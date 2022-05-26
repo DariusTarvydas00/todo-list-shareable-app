@@ -84,7 +84,7 @@ export default {
     login(){
       if(this.checkValidation()){
         axios.post(this.hostname + "/api/auth/Login",{
-          username: this.user.email,
+          username: this.user.username,
           password: this.user.password,
         })
             .then(response => {

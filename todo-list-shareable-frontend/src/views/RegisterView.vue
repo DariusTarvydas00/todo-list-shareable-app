@@ -8,7 +8,7 @@
         <hr>
 
         <label for="email"><b>Email</b></label>
-        <input id="email" v-model="user.email" ref="email" type="email" placeholder="Enter Email" name="email" />
+        <input id="email" v-model="user.username" ref="email" type="email" placeholder="Enter Email" name="email" />
 
         <label for="psw"><b>Password</b></label>
         <input id="psw" v-model="user.password" ref="psw" type="password" placeholder="Enter Password" name="psw" />
@@ -32,7 +32,7 @@ export default({
   data(){
     return{
       user:{
-        email:"",
+        username:"",
         password:"",
       },
     }
@@ -42,9 +42,10 @@ export default({
       this.$router.push({ name: 'Login' });
     },
     signup(){
+      console.log(this.username, this.password)
       if(this.checkValidation()){
         axios.post(this.hostname + "/auth/signup",{
-          username: this.user.email,
+          username: this.user.username,
           password: this.user.password,
         })
             .then(response => {
@@ -65,14 +66,14 @@ export default({
       }
     },
     checkValidation(){
-      if(!this.user.email){
+      if(!this.user.username){
         this.$refs.email.focus();
         Swal.fire("Give email !");
         return;
       }
-      if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.email)){
+      if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.username)){
         this.$refs.email.focus();
-        Swal.fire("Invalid email !");
+        Swal.fire("Invalid username !");
         return;
       }
       if(!this.user.password){
