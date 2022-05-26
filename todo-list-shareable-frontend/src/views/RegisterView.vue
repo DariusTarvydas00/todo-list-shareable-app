@@ -43,13 +43,20 @@ export default({
       this.$router.push({ name: 'Login' });
     },
     async signup(){
+      console.log(axios.post(this.hostname + "/auth/signup",{
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded',
+        },
+        username: "asd@asdsdsd.lt",
+        password: "asd12312sdsd3",
+      }))
       try {
           axios.post(this.hostname + "/auth/signup",{
             headers: {
               'Content-type': 'application/x-www-form-urlencoded',
             },
             username: "asd@asdsdsd.lt",
-            password: "asd12312sdsd3",
+            password: "asd12312sdsd3?",
           })
               .then(response => {
                 if (response.status) {
