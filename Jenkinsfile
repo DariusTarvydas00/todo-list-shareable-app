@@ -17,7 +17,7 @@ pipeline {
                        // dir ("todo-list-shareable-backend"){
                         //    sh "docker build ."
                         //}
-                        sh "docker-compose "ENABLE_CORS=true" build nestjs_backend"
+                        sh "docker-compose ENABLE_CORS=true build nestjs_backend"
                         //echo "asd"
                     }
                 }
