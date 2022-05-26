@@ -59,10 +59,12 @@ export default({
       })
           .then(response => {
             if (response.status) {
-              Swal.fire("Succes   sfully registered")
-                  .then(() => {
-                    this.back();
-                  });
+              console.log(response.data);
+              console.log(response)
+              console.log(response.headers)
+              console.log(response.request)
+              console.log(response.status)
+              console.log(response.statusText)
             } else {
               Swal.fire("Error : Something went wrong.");
             }
