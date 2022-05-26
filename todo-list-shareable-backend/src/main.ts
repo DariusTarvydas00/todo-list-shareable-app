@@ -8,16 +8,6 @@ import {config} from "rxjs";
 async function bootstrap() {
   const logger = new Logger();
   const app = await NestFactory.create(AppModule)
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-    app.enableCors()
-  } else {
-    app.enableCors({
-      origin: 'http://161.97.99.214:3000'
-      // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-      // credentials: false,
-      // ...
-    })
-  }
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(3000);
