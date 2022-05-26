@@ -4,10 +4,10 @@ services:
     restart: always
     image: 42-node
     build:
-      context: todo-list-shareable-backend
+      context: ./
       dockerfile: Dockerfile.42-node
     volumes:
-      - ./backend/:/app
+      - ./todo-list-shareable-backend/:/app
     ports:
       - 3000:3000
     networks:
@@ -18,7 +18,7 @@ services:
     restart: always
     image: 42-node
     volumes:
-      - ./frontend/:/app
+      - ./todo-list-shareable-frontend/:/app
     ports:
       - 8081:8080
     networks:
