@@ -14,18 +14,18 @@ pipeline {
             parallel {
                 stage ("Build Back End ") {
                     steps {
-                        dir ("todo-list-shareable-backend"){
-                            sh "docker build ."
-                        }
+                       // dir ("todo-list-shareable-backend"){
+                        //    sh "docker build ."
+                        //}
                         //sh "docker-compose build nestjs_backend"
                     }
                 }
                 stage ("Build Front End") {
                     steps {
-                        dir ("todo-list-shareable-frontend"){
-                            sh "docker build ."
-                        }
-                        //sh "docker-compose build vue_frontend"
+                      //  dir ("todo-list-shareable-frontend"){
+                       //     sh "docker build ."
+                      //  }
+                        sh "docker-compose build"
                     }
                 }
             }
