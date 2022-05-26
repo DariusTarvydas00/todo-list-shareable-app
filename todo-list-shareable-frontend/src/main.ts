@@ -6,5 +6,5 @@ import store from "./store";
 import { createPinia } from 'pinia'
 
 const app = createApp(App)
-app.config.globalProperties.hostname = "http://nestjs_backend:3000"
+app.config.globalProperties.hostname = "http://nestjs_backend"
 app.use(store).use(router).use(createPinia()).mount("#app");
