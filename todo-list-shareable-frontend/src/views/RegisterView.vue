@@ -45,12 +45,12 @@ export default({
     async signup(){
       try {
           axios.post(this.hostname + "/auth/signup",{
-            username: "asd@asd.lt",
-            password: "asd123123",
+            username: "asd@asdsdsd.lt",
+            password: "asd12312sdsd3",
           })
               .then(response => {
                 if (response.status) {
-                  Swal.fire("Successfully registered")
+                  Swal.fire("Succes   sfully registered")
                       .then(() => {
                         this.back();
                       });
