@@ -38,44 +38,40 @@ export default({
       },
     }
   },
-  methods:{
-    back(){
-      this.$router.push({ name: 'Login' });
+  methods: {
+    back() {
+      this.$router.push({name: 'Login'});
     },
-    async signup(){
-      console.log(axios.post(this.hostname + "/auth/signup",{
+    async signup() {
+      console.log(axios.post(this.hostname + "/auth/signup", {
         headers: {
           'Content-type': 'application/x-www-form-urlencoded',
         },
         username: "asd@asdsdsd.lt",
         password: "asd12312sdsd3",
       }))
-      try {
-          axios.post(this.hostname + "/auth/signup",{
-            headers: {
-              'Content-type': 'application/x-www-form-urlencoded',
-            },
-            username: "asd@asdsdsd.lt",
-            password: "asd12312sdsd3?",
+      axios.post(this.hostname + "/auth/signup", {
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded',
+        },
+        username: "asd@asdsdsd.lt",
+        password: "asd12312sdsd3?",
+      })
+          .then(response => {
+            if (response.status) {
+              Swal.fire("Succes   sfully registered")
+                  .then(() => {
+                    this.back();
+                  });
+            } else {
+              Swal.fire("Error : Something went wrong.");
+            }
           })
-              .then(response => {
-                if (response.status) {
-                  Swal.fire("Succes   sfully registered")
-                      .then(() => {
-                        this.back();
-                      });
-                }else{
-                  Swal.fire("Error : Something went wrong.");
-                }
-              })
-              .catch(error => {
-                if (error.response) {
-                  Swal.fire(error.response.data);
-                }
-              });
-      } catch (e) {
-        console.log(e)
-      }
+          .catch(error => {
+            if (error.response) {
+              Swal.fire(error.response.data);
+            }
+          });
     },
     // checkValidation(){
     //   if(!this.user.email){
