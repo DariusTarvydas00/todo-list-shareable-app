@@ -7,11 +7,10 @@ import { cors } from 'cors'
 
 async function bootstrap() {
   const logger = new Logger();
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {cors: true});
   app.enableCors({
     origin: 'http://nestjs_backend'
   });
-  app.use(cors())
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(3000);
