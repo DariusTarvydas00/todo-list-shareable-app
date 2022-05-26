@@ -4,7 +4,10 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import { createPinia } from 'pinia'
+import axios from "axios";
 
-const app = createApp(App)
+const app = await createApp(App)
 app.config.globalProperties.hostname = "http://161.97.99.214:3000"
-app.use(store).use(router).use(createPinia()).mount("#app");
+    app.use(store).use(router)
+    .use(createPinia())
+    .mount("#app");
