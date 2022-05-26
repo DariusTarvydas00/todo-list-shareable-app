@@ -44,7 +44,7 @@ export default({
     signup(){
       console.log(this.hostname)
       if(this.checkValidation()){
-        axios.post(this.hostname + "/auth/signup",{
+        axios.post("/auth/signup",{
           email: this.user.email,
           password: this.user.password,
         })
