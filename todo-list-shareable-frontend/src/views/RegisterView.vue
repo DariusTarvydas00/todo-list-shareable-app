@@ -42,6 +42,7 @@ export default({
       this.$router.push({ name: 'Login' });
     },
     signup(){
+      console.log(this.hostname)
       if(this.checkValidation()){
         axios.post(this.hostname + "/auth/signup",{
           email: this.user.email,
