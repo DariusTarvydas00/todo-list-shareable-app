@@ -18,6 +18,7 @@ pipeline {
                         //    sh "docker build ."
                         //}
                         //sh "docker-compose build nestjs_backend"
+                        echo "asd"
                     }
                 }
                 stage ("Build Front End") {
