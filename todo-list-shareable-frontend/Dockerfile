@@ -7,13 +7,12 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-CMD [ "http-server", "dist" ]
 
-FROM development AS production
+FROM nginx:stable-alpine AS production
 WORKDIR /usr/app/vue
 COPY --from=development /usr/app/vue ./
 EXPOSE 80
-CMD [ "http-server", "dist" ]
+CMD ["nginx", "-g", "daemon off;"]
 
 
 #FROM node:lts-alpine3.14 AS base
