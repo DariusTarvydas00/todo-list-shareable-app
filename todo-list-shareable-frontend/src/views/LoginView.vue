@@ -72,7 +72,7 @@ export default {
   data(){
     return{
       user:{
-        email:"",
+        username:"",
         password:""
       }
     }
@@ -84,7 +84,7 @@ export default {
     login(){
       if(this.checkValidation()){
         axios.post(this.hostname + "/api/auth/Login",{
-          email: this.user.email,
+          username: this.user.email,
           password: this.user.password,
         })
             .then(response => {
