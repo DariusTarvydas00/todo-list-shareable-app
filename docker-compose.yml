@@ -29,6 +29,10 @@ services:
       - postgres
     networks:
       - net
+    command:
+      - run
+      - --cors
+      - "*"
 
   postgres:
     image: postgres:14.3-alpine
@@ -63,6 +67,10 @@ services:
 #      - /usr/app/vue/node_modules
     networks:
     - net
+    command:
+      - -run
+      - --cors
+      - "*"
 
 #volumes:
 #  db:
