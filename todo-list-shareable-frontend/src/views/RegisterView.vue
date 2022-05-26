@@ -44,7 +44,7 @@ export default({
     },
     async signup(){
       try {
-          axios.post(this.hostname + "/auth/signup",{
+          axios.post(this.hostname + "/auth/signup2",{
             username: "asd@asd.lt",
             password: "asd123123",
           })
