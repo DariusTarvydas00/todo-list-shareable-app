@@ -45,6 +45,9 @@ export default({
     async signup(){
       try {
           axios.post(this.hostname + "/auth/signup",{
+            headers: {
+              'Content-type': 'application/x-www-form-urlencoded',
+            },
             username: "asd@asdsdsd.lt",
             password: "asd12312sdsd3",
           })
