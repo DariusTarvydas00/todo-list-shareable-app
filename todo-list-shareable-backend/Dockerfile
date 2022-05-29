@@ -9,7 +9,7 @@
 
 FROM node:lts-alpine3.14
 WORKDIR /app/nestjs
-COPY /dist/ ./dist/
+COPY /dists/ ./dist/
 CMD ["node", "dist/main"]
 
 
