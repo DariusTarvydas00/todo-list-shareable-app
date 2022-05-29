@@ -11,7 +11,8 @@ pipeline{
                 stage("Build Backend"){
                     steps{
                         dir("todo-list-shareable-backend"){
-                            sh "docker build ."
+                            sh "npm install"
+                            sh "npm run build"
                         }
                     }
                 }

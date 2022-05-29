@@ -1,6 +1,4 @@
-FROM node:lts:alpine3.14 as base
-
-FROM base
+FROM node:lts:alpine3.14
 COPY /dist ./dist
 COPY /node_modules ./node_modules
 CMD ["node", "dist/main"]
