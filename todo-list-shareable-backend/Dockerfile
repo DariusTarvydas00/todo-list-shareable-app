@@ -1,7 +1,7 @@
 #FROM node:lts-alpine3.14 as base
 #RUN MKDIR /app/nestjs
 #
-#FROM base as development
+#FROM base as devsdelopment
 #WORKDIR /app/nestjs
 #COPY package*.json ./
 #
