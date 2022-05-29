@@ -19,8 +19,9 @@ pipeline{
                 stage('Build Frontend') {
                     steps {
                         dir("todo-list-shareable-frontend"){
-                            sh "npm install"
-                            sh "npm run build"
+                        echo "1"
+                           // sh "npm install"
+                           // sh "npm run build"
                         }
                     }
                 }
@@ -44,25 +45,29 @@ pipeline{
         stage("Clean containers") {
             steps {
                 script {
-                    sh "docker-compose --env-file config/Test.env down"
+                echo "1"
+                 //    sh "docker-compose --env-file config/Test.env down"
                 }
             }
         }
         stage("Deploy containers") {
             steps {
-                sh "docker-compose --env-file config/Test.env up -d health-web health-api influxdb grafana"
+            echo "1"
+             //   sh "docker-compose --env-file config/Test.env up -d health-web health-api influxdb grafana"
             }
         }
 
         stage('Smoke Test') {
             steps {
-                sh 'docker-compose --env-file config/Test.env run k6 run /scripts/smoke-test.js'
+            echo "1"
+              //  sh 'docker-compose --env-file config/Test.env run k6 run /scripts/smoke-test.js'
             }
         }
 
         stage("Push to registry") {
             steps {
-                sh "docker-compose --env-file config/Test.env push"
+            echo "1"
+                //sh "docker-compose --env-file config/Test.env push"
             }
         }
     }

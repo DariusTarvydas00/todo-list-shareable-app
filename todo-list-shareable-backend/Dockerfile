@@ -1,3 +1,12 @@
+#FROM node:lts-alpine3.14 as base
+#RUN MKDIR /app/nestjs
+#
+#FROM base as development
+#WORKDIR /app/nestjs
+#COPY package*.json ./
+#
+
+
 FROM node:lts-alpine3.14
 COPY /dist ./dist
 COPY /node_modules ./node_modules
