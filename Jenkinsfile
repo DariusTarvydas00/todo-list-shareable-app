@@ -12,6 +12,7 @@ pipeline{
                     steps{
                         dir("todo-list-shareable-backend"){
                         sh "docker-compose build nestjs_backend"
+                        sh "docker-compose run"
                             //sh "docker build -t asd ."
                            // sh "docker run asd"
                         }
