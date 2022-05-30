@@ -3,7 +3,7 @@ FROM node:lts-alpine3.14 AS base
 FROM base AS development
 WORKDIR /app/nestjs
 COPY /dist/ ./dist/
-CMD ["node", "dist/main"]
+CMD ["node", "dist"]
 #
 #FROM base AS development
 #WORKDIR /app/nestjs
@@ -14,7 +14,7 @@ CMD ["node", "dist/main"]
 FROM node:lts-alpine3.14
 WORKDIR /app/nestjs
 COPY /dist/ ./dist/
-CMD ["node", "dist/main"]
+CMD ["node", "dist"]
 
 
 #FROM node:lts-alpine3.14
