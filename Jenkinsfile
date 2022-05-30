@@ -33,6 +33,7 @@ pipeline {
                     steps {
                         dir("todo-list-shareable-frontend"){
                             sh "docker build -t docker ."
+                            sh "docker run -it -p 8084:80 --rm docker ."
                         }
                         //sh "docker-compose build vue_frontend"
                     }
