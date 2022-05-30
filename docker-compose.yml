@@ -158,78 +158,78 @@ networks:
     #    networks:
     #      net:
 
-    version: '3.4'
-    services:
-      nestjs_backend:
-        image: nestjs_backend
-        build:
-          context: todo-list-shareable-backend
-          dockerfile: Dockerfile
-        env_file:
-          - ./todo-list-shareable-backend/.env.stage.dev
-        environment:
-          DATABASE_URL: postgres://user:password@postgres:5432/db
-          NODE_ENV: development
-          DB_TYPE: postgres
-          POSTGRES_HOST: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_PASS: postgres
-          POSTGRES_DB: db
-            - POSTGRES_SYNC = false
-          JWT_SECRET: anyKey
-          POSTGRES_PORT: 5432
-          APP_EXPIRES: 3600
-          APP_PORT: 3000
-        ports:
-          - "3000:3000"
-        #    volumes:
-        #      - /node/app/node_modules
-        container_name: nestjs-backend
-        depends_on:
-          - postgres
-        networks:
-          - net
-
-      postgres:
-        image: postgres:14.3-alpine
-        restart: always
-        container_name: postgres-db
-        ports:
-          - "5432:5432"
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
-          PGDATA: /data/postgres
-        #    volumes:
-        #      - db:/var/lib/postgresql/data
-        networks:
-          - net
-
-      vue_frontend:
-        image: todo-list-shareable-frontend
-        build:
-          context: todo-list-shareable-frontend
-          dockerfile: Dockerfile
-        environment:
-          - NODE_ENV=development
-        ports:
-          - "8082:8081"
-          - "8083:8080"
-        #    volumes:
-        #      - ./usr/app/vue:/app
-        #      - /usr/app/vue/node_modules
-        networks:
-          - net
+#    version: '3.4'
+#    services:
+#      nestjs_backend:
+#        image: nestjs_backend
+#        build:
+#          context: todo-list-shareable-backend
+#          dockerfile: Dockerfile
+#        env_file:
+#          - ./todo-list-shareable-backend/.env.stage.dev
+#        environment:
+#          DATABASE_URL: postgres://user:password@postgres:5432/db
+#          NODE_ENV: development
+#          DB_TYPE: postgres
+#          POSTGRES_HOST: postgres
+#          POSTGRES_USER: postgres
+#          POSTGRES_PASS: postgres
+#          POSTGRES_DB: db
+#            - POSTGRES_SYNC = false
+#          JWT_SECRET: anyKey
+#          POSTGRES_PORT: 5432
+#          APP_EXPIRES: 3600
+#          APP_PORT: 3000
+#        ports:
+#          - "3000:3000"
+#        #    volumes:
+#        #      - /node/app/node_modules
+#        container_name: nestjs-backend
+#        depends_on:
+#          - postgres
+#        networks:
+#          - net
+#
+#      postgres:
+#        image: postgres:14.3-alpine
+#        restart: always
+#        container_name: postgres-db
+#        ports:
+#          - "5432:5432"
+#        environment:
+#          POSTGRES_USER: postgres
+#          POSTGRES_PASSWORD: postgres
+#          POSTGRES_DB: postgres
+#          PGDATA: /data/postgres
+#        #    volumes:
+#        #      - db:/var/lib/postgresql/data
+#        networks:
+#          - net
+#
+#      vue_frontend:
+#        image: todo-list-shareable-frontend
+#        build:
+#          context: todo-list-shareable-frontend
+#          dockerfile: Dockerfile
+#        environment:
+#          - NODE_ENV=development
+#        ports:
+#          - "8082:8081"
+#          - "8083:8080"
+#        #    volumes:
+#        #      - ./usr/app/vue:/app
+#        #      - /usr/app/vue/node_modules
+#        networks:
+#          - net
 
     #volumes:
     #  db:
     #    driver: local
     #  pgadmin-data:
 
-    networks:
-      net:
-        driver: bridge
+#    networks:
+#      net:
+#        driver: bridge
 
         #    version: '3.4'
         #    services:
@@ -358,26 +358,26 @@ networks:
     #    ports:
     #      - "8082:8080"
 
-version: '3.4'
-services:
-  nestjs:
-    image: todo-list-shareable-backend
-    build:
-      context: todo-list-shareable-backend
-      target: ${NODE_ENV}
-      args:
-        - NODE_ENV=${NODE_ENV}
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - SERVER_PORT=${SERVER_PORT}
-    env_file:
-      - todo-list-shareable-backend/environments/development.env
-    ports:
-      - "3000:${SERVER_PORT}"
-      - "9229:9229"
-    volumes:
-      - .:/node/app:delegated
-      - /node/app/node_modules
+#version: '3.4'
+#services:
+#  nestjs:
+#    image: todo-list-shareable-backend
+#    build:
+#      context: todo-list-shareable-backend
+#      target: ${NODE_ENV}
+#      args:
+#        - NODE_ENV=${NODE_ENV}
+#    environment:
+#      - NODE_ENV=${NODE_ENV}
+#      - SERVER_PORT=${SERVER_PORT}
+#    env_file:
+#      - todo-list-shareable-backend/environments/development.env
+#    ports:
+#      - "3000:${SERVER_PORT}"
+#      - "9229:9229"
+#    volumes:
+#      - .:/node/app:delegated
+#      - /node/app/node_modules
 #  nestjs:
 #    image: todo_list_shareable_backend_development
 #    container_name: todo-nestjs
@@ -418,27 +418,27 @@ services:
 #      - net
 #networks:
 #  net:
-version: '3.4'
-services:
-  nestjs:
-    image: todo-list-shareable-backend
-    build:
-      context: todo-list-shareable-backend
-      target: ${NODE_ENV}
-      args:
-        - NODE_ENV=${NODE_ENV}
-        - NPM_TOKEN=${NPM_TOKEN}
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - SERVER_PORT=${SERVER_PORT}
-    env_file:
-      - todo-list-shareable-backend/environments/production.env
-    ports:
-      - "3000:${SERVER_PORT}"
-      - "9229:9229"
-    volumes:
-      - .:/node/app:delegated
-      - /node/app/node_modules
+#version: '3.4'
+#services:
+#  nestjs:
+#    image: todo-list-shareable-backend
+#    build:
+#      context: todo-list-shareable-backend
+#      target: ${NODE_ENV}
+#      args:
+#        - NODE_ENV=${NODE_ENV}
+#        - NPM_TOKEN=${NPM_TOKEN}
+#    environment:
+#      - NODE_ENV=${NODE_ENV}
+#      - SERVER_PORT=${SERVER_PORT}
+#    env_file:
+#      - todo-list-shareable-backend/environments/production.env
+#    ports:
+#      - "3000:${SERVER_PORT}"
+#      - "9229:9229"
+#    volumes:
+#      - .:/node/app:delegated
+#      - /node/app/node_modules
 #  nestjs:
 #    image: todo_list_shareable_backend_development
 #    container_name: todo-nestjs
