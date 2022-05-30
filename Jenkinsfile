@@ -69,8 +69,9 @@ pipeline {
         }
         stage("Run in Development Environment") {
             steps{
-                sh "docker-compose down"
-                sh "docker-compose up -d"
+            echo "1"
+                //sh "docker-compose down"
+                //sh "docker-compose up -d"
             }
         }
     }
