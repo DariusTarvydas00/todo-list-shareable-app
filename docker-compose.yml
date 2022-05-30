@@ -73,6 +73,8 @@ services:
 
 networks:
   net:
+    labels:
+      net: name
     driver: bridge
 
 #    version: '3.4'
