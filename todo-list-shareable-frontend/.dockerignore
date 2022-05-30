@@ -4,5 +4,5 @@
 docker-compose*
 Dockerfile-test
 node_modules
-.env*
+../environments/garbage/frontend/.env
 .vscode
