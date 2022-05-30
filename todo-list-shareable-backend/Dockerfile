@@ -14,7 +14,7 @@ CMD ["node", "dist"]
 FROM node:lts-alpine3.14
 WORKDIR /app/nestjs
 COPY /dist/ ./dist/
-CMD ["node", "dist"]
+CMD ["node", "dist/src/main.js"]
 
 
 #FROM node:lts-alpine3.14
