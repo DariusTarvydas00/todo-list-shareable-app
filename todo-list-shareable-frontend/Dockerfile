@@ -1,19 +1,14 @@
-FROM node:lts-alpine3.14 AS base
-RUN npm install -g http-server
-
-FROM base AS development
+FROM node:lts-alpine3.14 AS build-stage
 WORKDIR /usr/app/vue
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-CMD ["npm", "run", "serve"]
 
-FROM development AS production
-WORKDIR /usr/app/vue
-COPY --from=development /usr/app/vue ./
+FROM nginx:stable-alpine AS production
+COPY --from=build-stage /usr/app/vue ./usr/share/nginx/html
 EXPOSE 80
-CMD [ "http-server", "dist" ]
+CMD [ "nginx", "-g", "daemon off;" ]
 
 #FROM node:lts-alpine3.14 as build-stage
 #WORKDIR /app/vue/

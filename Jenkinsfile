@@ -24,10 +24,13 @@ pipeline {
                     }
                 }
                 stage ("Build Front End") {
+                    when {
+                        anyOf {
+                            changeset "todo-list-shareable-frontend/src/**"
+                            changeset "todo-list-shareable-frontend/tests/**"
+                        }
+                    }
                     steps {
-                      //  dir ("todo-list-shareable-frontend"){
-                       //     sh "docker build ."
-                      //  }
                         sh "docker-compose build vue_frontend"
                     }
                 }
