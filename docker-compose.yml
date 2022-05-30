@@ -8,6 +8,7 @@ services:
     env_file:
       - ./todo-list-shareable-backend/.env.stage.dev
     environment:
+      STAGE: dev
       DATABASE_URL: postgres://user:password@postgres:5432/db
       NODE_ENV: development
       DB_TYPE: postgres
