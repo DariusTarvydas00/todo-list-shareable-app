@@ -21,7 +21,7 @@ COPY package*.json ./
 RUN npm install --only=production
 COPY . .
 COPY --from=development /usr/src/app/dist ./dist
-CMD ["npm", "run", "start"]
+CMD ["node", "dist/src/main"]
 ##
 #FROM base AS development
 #WORKDIR /app/nestjs
