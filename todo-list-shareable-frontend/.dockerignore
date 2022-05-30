@@ -2,7 +2,5 @@
 .git
 .gitignore
 docker-compose*
-Dockerfile-test
 node_modules
-../environments/garbage/frontend/.env
 .vscode
