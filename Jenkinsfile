@@ -13,9 +13,10 @@ pipeline {
         stage("Build Project") {
             parallel {
                 stage ("Build Back End ") {
+                    dir("todo-list-shareable-frontend"){
                     when {
                         anyOf {
-                            dir("todo-list-shareable-frontend"){
+
                                 changeset "src/**"
                                 changeset "test/**"
                             }
