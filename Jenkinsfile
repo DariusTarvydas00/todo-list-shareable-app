@@ -31,7 +31,10 @@ pipeline {
                         }
                     }
                     steps {
-                        sh "docker-compose build vue_frontend"
+                        dir("todo-list-shareable-frontend"){
+                            sh "docker build -t docker ."
+                        }
+                        //sh "docker-compose build vue_frontend"
                     }
                 }
             }
