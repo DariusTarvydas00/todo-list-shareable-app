@@ -9,7 +9,6 @@ CMD ["nginx", "-g", "daemon off;"]
 
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /app/vue/dist/ /usr/share/nginx/html
-EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 #FROM node:lts-alpine3.14 AS base
 #RUN npm install -g http-server
