@@ -40,8 +40,8 @@ pipeline {
             parallel {
                 stage("Unit Test Back-End") {
                     steps {
-                        dir ("todo-list-shareable-frontend"){
-                          sh "npm run test"
+                        dir ("todo-list-shareable-backend"){
+                          sh "npm run test:cov"
                         }
                     }
                 }
