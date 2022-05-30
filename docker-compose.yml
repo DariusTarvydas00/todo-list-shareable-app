@@ -25,7 +25,7 @@ services:
       - "3000:3000"
 #    volumes:
 #      - /node/app/node_modules
-    container_name: nestjs-backend
+    container_name: nestjs_backend
     depends_on:
       - postgres
     networks:
@@ -48,7 +48,8 @@ services:
       - net
 
   vue_frontend:
-    image: todo-list-shareable-frontend
+    container_name: vue_frontend
+    image: vue_frontend
     build:
       context: todo-list-shareable-frontend
       dockerfile: Dockerfile
