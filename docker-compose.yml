@@ -36,6 +36,8 @@ services:
       - nestjs_backend
     env_file:
       - environments/test-manual.env
+    environment:
+      STAGE: dev
     ports:
       - "8082:8081"
       - "8083:8080"
