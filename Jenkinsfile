@@ -21,6 +21,7 @@ pipeline{
                 stage('Build Frontend') {
                     steps {
                         dir("todo-list-shareable-frontend"){
+                        sh "docker-compose build vue_frontend"
                        // sh "docker build ."
                         echo "1"
                            // sh "npm install"
@@ -56,7 +57,7 @@ pipeline{
         stage("Deploy containers") {
             steps {
             echo "1"
-             //   sh "docker-compose --env-file config/Test.env up -d health-web health-api influxdb grafana"
+             /  sh "docker-compose up -d"
             }
         }
 
