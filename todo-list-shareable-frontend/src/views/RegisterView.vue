@@ -34,7 +34,7 @@ export default {
       axios.post({
 
       })
-      const res = await fetch(this.hostname + "/auth/register",
+      const res = await fetch(this.hostname + "/auth/signup",
           {
             method: "POST",
             headers: {
