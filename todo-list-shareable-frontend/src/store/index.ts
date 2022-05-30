@@ -4,8 +4,8 @@ export default createStore({
   state: {},
   getters: {},
   mutations: {
-    SET_USER (state, user) {
-    }
+    // SET_USER (state, user) {
+    // }
   },
   actions: {},
   modules: {},
