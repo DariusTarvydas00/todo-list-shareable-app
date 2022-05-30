@@ -57,7 +57,7 @@ pipeline{
         stage("Deploy containers") {
             steps {
             echo "1"
-             /  sh "docker-compose up -d"
+               sh "docker-compose up -d"
             }
         }
 
