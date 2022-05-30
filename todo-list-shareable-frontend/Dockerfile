@@ -4,6 +4,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
+CMD ["nginx", "-g", "daemon off;"]
 #FROM node:lts-alpine3.14 AS base
 #RUN npm install -g http-server
 #
