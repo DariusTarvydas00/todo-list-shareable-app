@@ -11,8 +11,8 @@ pipeline{
                 stage("Build Backend"){
                     steps{
                         dir("todo-list-shareable-backend"){
-                            sh "docker build ."
-                            sh "docker run -t asd"
+                            sh "docker build -t asd ."
+                            sh "docker run asd"
                         }
                     }
                 }
