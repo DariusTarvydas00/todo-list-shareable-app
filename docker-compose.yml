@@ -53,6 +53,8 @@ services:
     build:
       context: todo-list-shareable-frontend
       dockerfile: Dockerfile
+    links:
+      - nestjs_backend
     environment:
       - NODE_ENV=development
     ports:
