@@ -39,6 +39,12 @@ pipeline {
         stage("Unit Test"){
             parallel {
                 stage("Unit Test Back-End") {
+                    when {
+                        anyOf {
+                            changeset "todo-list-shareable-backend/src/**"
+                            changeset "todo-list-shareable-backend/test/**"
+                        }
+                    }
                     steps {
                         dir ("todo-list-shareable-backend"){
                           sh "npm run test:cov"
@@ -46,6 +52,12 @@ pipeline {
                     }
                 }
                 stage("Unit Test Front End"){
+                    when {
+                        anyOf {
+                        changeset "todo-list-shareable-frontend/src/**"
+                        changeset "todo-list-shareable-frontend/tests/**"
+                        }
+                    }
                     steps {
                         dir ("todo-list-shareable-frontend"){
                             sh "npm run test:unit"
