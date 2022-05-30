@@ -12,12 +12,14 @@ pipeline{
                     steps{
                         dir("todo-list-shareable-backend"){
                             sh "docker build ."
+                            sh "docker run"
                         }
                     }
                 }
                 stage('Build Frontend') {
                     steps {
                         dir("todo-list-shareable-frontend"){
+                       // sh "docker build ."
                         echo "1"
                            // sh "npm install"
                            // sh "npm run build"
