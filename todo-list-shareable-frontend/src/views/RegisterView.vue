@@ -34,8 +34,7 @@ export default {
       axios.post({
 
       })
-      const res = await fetch(
-          "https://SomberHandsomePhysics--five-nine.repl.co/register",
+      const res = await fetch(this.hostname + "/auth/register",
           {
             method: "POST",
             headers: {
