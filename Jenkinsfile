@@ -68,16 +68,14 @@ pipeline {
         }
         stage("Setup manual test env"){
             steps{
-            echo "test"
+                echo "test"
                 sh "docker-compose --env-file environments/test-manual.env down"
                 sh "docker-compose --env-file environments/test-manual.env up -d"
             }
         }
-        stage("Run in Development Environment") {
+        stage("Push to registry") {
             steps{
-            echo "1"
-                sh "docker-compose down"
-                sh "docker-compose up -d"
+                sh "docker-compose down --env-file environments/test-manual.env push"
             }
         }
     }
