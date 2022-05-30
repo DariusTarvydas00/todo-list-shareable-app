@@ -46,8 +46,8 @@ services:
       - net
 
   vue_frontend:
-    container_name: vue_frontend
     image: vue_frontend
+    container_name: vue_frontend
     build:
       context: todo-list-shareable-frontend
       dockerfile: Dockerfile
