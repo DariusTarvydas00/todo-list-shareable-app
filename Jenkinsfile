@@ -41,7 +41,7 @@ pipeline {
                 stage("Unit Test Back-End") {
                     steps {
                         dir ("todo-list-shareable-frontend"){
-                          sh "npm run test:cov"
+                          sh "npm run test"
                         }
                     }
                 }
