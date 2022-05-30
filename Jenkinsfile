@@ -12,7 +12,7 @@ pipeline{
                     steps{
                         dir("todo-list-shareable-backend"){
                             sh "docker build ."
-                            sh "docker run"
+                            sh "docker run -t asd"
                         }
                     }
                 }
