@@ -31,11 +31,7 @@ pipeline {
                        // }
                    // }
                     steps {
-                        dir("todo-list-shareable-frontend"){
-                            sh "docker build -t docker-vue ."
-                            sh "docker run docker -p 8084:80 --rm docker-vue ."
-                        }
-                        //sh "docker-compose build vue_frontend"
+                        sh "docker-compose build vue_frontend"
                     }
                 }
             }
