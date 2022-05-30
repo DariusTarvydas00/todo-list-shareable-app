@@ -15,8 +15,8 @@ pipeline {
                 stage ("Build Back End ") {
                   //  when {
                       //  anyOf {
-                            changeset "todo-list-shareable-backend/src/**"
-                            changeset "todo-list-shareable-backend/test/**"
+                        //    changeset "todo-list-shareable-backend/src/**"
+                         //   changeset "todo-list-shareable-backend/test/**"
                       //  }
                   //  }
                     steps {
@@ -26,8 +26,8 @@ pipeline {
                 stage ("Build Front End") {
                    // when {
                        // anyOf {
-                            changeset "todo-list-shareable-frontend/src/**"
-                            changeset "todo-list-shareable-frontend/tests/**"
+                         //   changeset "todo-list-shareable-frontend/src/**"
+                         //   changeset "todo-list-shareable-frontend/tests/**"
                        // }
                    // }
                     steps {
