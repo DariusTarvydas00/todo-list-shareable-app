@@ -60,6 +60,7 @@ services:
     ports:
       - "8082:8081"
       - "8083:8080"
+      - "8084:80"
 #    volumes:
 #      - ./usr/app/vue:/app
 #      - /usr/app/vue/node_modules
