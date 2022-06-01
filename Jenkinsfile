@@ -13,12 +13,12 @@ pipeline {
         stage("Build Project") {
             parallel {
                 stage ("Build Back End ") {
-                   // when {
-                      //  anyOf {
-                          //  changeset "todo-list-shareable-backend/src/**"
-                        //    changeset "todo-list-shareable-backend/test/**"
-                       // }
-                   // }
+                    when {
+                        anyOf {
+                            changeset "todo-list-shareable-backend/src/**"
+                            changeset "todo-list-shareable-backend/test/**"
+                        }
+                    }
                     steps {
                         sh "docker-compose build nestjs_backend"
                     }
@@ -73,9 +73,16 @@ pipeline {
                 sh "docker-compose --env-file environments/test-manual.env up -d"
             }
         }
-        stage("Push to registry") {
+        stage("Deliver to registry") {
             steps{
                 sh "docker-compose down --env-file environments/test-manual.env push"
+            }
+        }
+        stage("Deliver to production") {
+            steps{
+                build job: "ToDoList/02 - Deploy to production", wait: false, parameters: [
+                    string{name:"TAG_NUMBER", value env.BUILD_NUMBER}
+                ]
             }
         }
     }
