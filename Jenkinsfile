@@ -80,9 +80,7 @@ pipeline {
         }
         stage("Deliver to production") {
             steps{
-                build job: "ToDoList/02 - Deploy to production", wait: false, parameters: [
-                    string{name:"TAG_NUMBER", value env.BUILD_NUMBER}
-                ]
+                build job: "ToDoList/02 - Deploy to production", wait: false
             }
         }
     }
