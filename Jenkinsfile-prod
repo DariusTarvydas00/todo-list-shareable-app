@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    //parameters {
+        //string 'TAG_NUMBER'
+    //}
+   // environment {
+       // TIMESTAMP = sh(script: "date +%s", returnStdout: true).trim()
+       // SCREENSHOT_PATH = "screenshots/${TIMESTAMP}"
+   // }
+    stages {
+        stage("Setup test environment") {
+            steps {
+                sh "docker-compose --env-file environments/test-auto.env down"
+                sh "docker-compose --env-file environments/test-auto.env up -d"
+            }
+        }
+        stage("UI tests") {
+            stages {
+                stage("Firefox") {
+                    steps {
+                        sh "docker run --rm -v ${WORKSPACE}/tests/ui:/tests -v ${WORKSPACE}/${SCREENSHOT_PATH}:/screenshots --env BASE_URL=http://devops.setgo.dk:9877 testcafe/testcafe firefox /tests/*.js"
+                    }
+                }
+                stage("Reset") {
+                    steps {
+                        sh "docker-compose --env-file environments/test-auto.env down"
+                        sh "docker-compose --env-file environments/test-auto.env up -d"
+                    }
+                }
+                stage("Chrome") {
+                    steps {
+                        sh "docker run --rm -v ${WORKSPACE}/tests/ui:/tests -v ${WORKSPACE}/${SCREENSHOT_PATH}:/screenshots --env BASE_URL=http://devops.setgo.dk:9877 testcafe/testcafe chromium /tests/*.js"
+                    }
+                }
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: "${SCREENSHOT_PATH}/**", allowEmptyArchive: true
+                }
+            }
+        }
+        stage("Performance tests") {
+            steps {
+                sh "k6 run -e BASE_URL=http://localhost:9877 tests/perf/load-test.js"
+            }
+        }
+        stage("Update production") {
+            steps {
+                sh "docker-compose --env-file environments/prod.env down"
+                sh "docker-compose --env-file environments/prod.env up -d"
+            }
+        }
+    }
+
+}

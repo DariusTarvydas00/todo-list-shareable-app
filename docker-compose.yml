@@ -65,6 +65,12 @@ services:
     networks:
     - net
 
+  k6:
+    image: loadimpact/k6:latest
+    command: run /scripts/test.js
+    volumes:
+      - ./scripts:/scripts
+
 #volumes:
 #  db:
 #    driver: local

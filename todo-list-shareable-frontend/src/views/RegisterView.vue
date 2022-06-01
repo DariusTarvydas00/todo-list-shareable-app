@@ -31,9 +31,6 @@ export default {
   methods: {
     async login() {
       const { username, password } = this;
-      axios.post({
-
-      })
       const res = await fetch(this.hostname + "/auth/signup",
           {
             method: "POST",
