@@ -66,7 +66,7 @@ services:
     - net
 
   influxdb:
-    container_name: "influxdb"
+    container_name: influxdb
     image: influxdb:1.8
     networks:
       - k6
@@ -77,7 +77,7 @@ services:
       - INFLUXDB_DB=k6
 
   grafana:
-    container_name: "grafana"
+    container_name: grafana
     image: grafana/grafana:latest
     networks:
       - grafana
@@ -93,7 +93,7 @@ services:
       - ./loadtests/grafana-datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
 
   k6:
-    container_name: "k6"
+    container_name: k6
     image: grafana/k6:latest
     networks:
       - k6
