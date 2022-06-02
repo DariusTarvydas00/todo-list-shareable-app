@@ -15,7 +15,7 @@ export let options = {
 };
 
 export default function () {
-    const response = http.get("https://swapi.dev/api/people/30/", {headers: {Accepts: "application/json"}});
+    const response = http.get("https://161.97.99.214:3000/", {headers: {Accepts: "application/json"}});
     check(response, { "status is 200": (r) => r.status === 200 });
     sleep(.300);
 };
