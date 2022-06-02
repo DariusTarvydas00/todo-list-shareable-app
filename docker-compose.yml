@@ -66,23 +66,23 @@ services:
     - net
 
   influxdb:
-    container_name: "${INFLUXDB_CONT_NAME}"
+    container_name: "influxdb"
     image: influxdb:1.8
     networks:
       - k6
       - grafana
     ports:
-      - "${INFLUXDB_PORT}:8086"
+      - "8086:8086"
     environment:
       - INFLUXDB_DB=k6
 
   grafana:
-    container_name: "${GRAFANA_CONT_NAME}"
+    container_name: "grafana"
     image: grafana/grafana:latest
     networks:
       - grafana
     ports:
-      - "${GRAFANA_PORT}:3000"
+      - "3000:3000"
     environment:
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
       - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -93,7 +93,7 @@ services:
       - ./loadtests/grafana-datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
 
   k6:
-    container_name: "${K6_CONT_NAME}"
+    container_name: "k6"
     image: grafana/k6:latest
     networks:
       - k6
@@ -102,7 +102,7 @@ services:
     environment:
       - K6_OUT=influxdb=http://influxdb:8086/k6
     volumes:
-      - ./loadtests/scripts:/scripts
+      - ./loadtests/scripts.js:/scripts.js
 
 #volumes:
 #  db:
