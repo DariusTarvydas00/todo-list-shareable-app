@@ -71,7 +71,7 @@ pipeline {
                 echo "test"
                 sh "docker-compose --env-file environments/test-manual.env down"
                 sh "docker-compose --env-file environments/test-manual.env up -d"
-                sh 'docker-compose run k6 run /scripts/ewoks.js'
+                sh 'docker-compose run k6 run /loadtests/ewoks.js'
             }
         }
         stage("Deliver to registry") {
