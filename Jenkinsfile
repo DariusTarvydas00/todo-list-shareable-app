@@ -75,6 +75,8 @@ pipeline {
         }
         stage("Deliver to registry") {
             steps{
+            sh 'pwd'
+            sh 'ls'
             sh 'docker-compose run k6 run loadtests/ewoks.js'
                 sh "docker-compose down --env-file environments/test-manual.env push"
             }
