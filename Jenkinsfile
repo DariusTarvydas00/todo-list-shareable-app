@@ -70,7 +70,7 @@ pipeline {
             steps{
                 echo "test"
                 sh "docker-compose down"
-                sh "docker-compose --env-file environments/test-manual.env up -d"
+                sh "docker-compose --env-file environments/test-manual.env up -d nestjs_backend vue_frontend grafana influxdb"
                 sh 'docker-compose run k6 run /loadtests/ewoks.js'
             }
         }
