@@ -21,7 +21,7 @@ export class TasksController {
         @Query() filterDto: GetTasksFilterDto,
         @GetUser() user: User,
     ): Promise<Task[]> {
-        this.logger.verbose('User "${user.username}" retrieving all tasks. Filters: ${JSON.stringify(filterDto)}');
+        this.logger.verbose('User "${user.username}" retriev ing all tasks. Filters: ${JSON.stringify(filterDto)}');
         return this.tasksService.getTasks(filterDto, user);
     }
 
