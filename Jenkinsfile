@@ -71,6 +71,7 @@ pipeline {
                 echo "test"
                 sh "docker-compose --env-file environments/test-manual.env down"
                 sh "docker-compose --env-file environments/test-manual.env up -d"
+                 sh 'docker-compose --env-file config/Test.env run k6 run /scripts/smoke-test.js'
             }
         }
         stage("Deliver to registry") {
