@@ -110,6 +110,8 @@ services:
 #  pgadmin-data:
 
 networks:
+  grafana:
+  k6:
   net:
     driver: bridge
 
