@@ -88,9 +88,7 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_BASIC_ENABLED=false
     volumes:
-      - ./loadtests/dashboards:/var/lib/grafana/dashboards
-      - ./loadtests/grafana-dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
-      - ./loadtests/grafana-datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
+      - ./grafana:/etc/grafana/provisioning/
 
   k6:
     container_name: k6
@@ -102,7 +100,7 @@ services:
     environment:
       - K6_OUT=influxdb=http://influxdb:8086/k6
     volumes:
-      - ./loadtests/:/scripts/
+      - ./scripts:/scripts
 
 #volumes:
 #  db:
