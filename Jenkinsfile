@@ -76,7 +76,7 @@ pipeline {
             steps{
             dir("grafana"){
             sh 'pwd'
-            wh 'ls'
+            sh 'ls'
                 sh 'docker-compose -f docker-compose-graf.yml up -d influxdb grafana'
                 sh 'docker-compose -f docker-compose-graf.yml run k6 run scripts/ewoks.js'
             }
