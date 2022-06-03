@@ -74,19 +74,15 @@ pipeline {
         }
         stage("Deliver to registry") {
             steps{
-            dir("grafana"){
-            sh 'pwd'
-            sh 'ls'
-                sh 'docker-compose -f docker-compose-graf.yml up -d influxdb grafana'
-                sh 'docker-compose -f docker-compose-graf.yml run k6 run grafana/scripts/ewoks.js'
-            }
-
                 sh "docker-compose down --env-file environments/test-manual.env push"
             }
         }
-        stage("Deliver to production") {
-            steps{
-                build job: "ToDoList/02 - Deploy to production", wait: false
+        stage("Grafana"){
+            steps {
+                dir("grafana"){
+                    sh 'docker-compose -f docker-compose-graf.yml up -d influxdb grafana'
+                    sh 'docker-compose -f docker-compose-graf.yml run k6 run ./grafana/scripts/ewoks.js'
+                }
             }
         }
     }
