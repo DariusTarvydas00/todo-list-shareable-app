@@ -68,16 +68,17 @@ pipeline {
         }
         stage("Setup manual test env"){
             steps{
-                echo "test"
                 sh "docker-compose --env-file environments/test-manual.env down"
                 sh "docker-compose --env-file environments/test-manual.env up -d"
             }
         }
         stage("Deliver to registry") {
             steps{
-            sh 'pwd'
-            sh 'ls'
-            sh 'docker-compose run k6 run loadtests/ewoks.js'
+            dir("k6"){
+                sh 'docker-compose run k6 run ewoks.js'
+            }
+
+
                 sh "docker-compose down --env-file environments/test-manual.env push"
             }
         }

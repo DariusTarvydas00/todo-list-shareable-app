@@ -1,10 +1,8 @@
-FROM node:lts-alpine3.14 AS develop
+FROM node:lts-alpine3.14 AS build
 WORKDIR /usr/app/vue
 COPY package*.json ./
 RUN npm install
 COPY . .
-
-FROM develop AS build
 RUN npm run build
 
 FROM nginx:stable-alpine AS production
