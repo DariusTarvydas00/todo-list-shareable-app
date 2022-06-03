@@ -47,7 +47,7 @@ pipeline {
                     }
                     steps {
                         dir ("todo-list-shareable-backend"){
-                          sh "npm run test:cov"
+                          sh "npm run test"
                         }
                     }
                 }
