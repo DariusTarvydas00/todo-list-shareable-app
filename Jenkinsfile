@@ -69,15 +69,13 @@ pipeline {
         stage("Setup manual test env"){
             steps{
                 sh "docker-compose --env-file environments/test-manual.env down"
-                sh "docker-compose --env-file environments/test-manual.env up -d"
+                sh "docker-compose --env-file environments/test-manual.env up -d nestjs_backend vue_frontend"
             }
         }
         stage("Deliver to registry") {
             steps{
-            dir ("k6"){
             sh 'docker-compose up -d influxdb grafana'
             sh 'docker-compose run k6 run /scripts/ewoks.js'
-            }
 
                 sh "docker-compose down --env-file environments/test-manual.env push"
             }
