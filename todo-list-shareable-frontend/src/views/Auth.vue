@@ -6,7 +6,7 @@
         <login-form @on-login-submit="handleOnLogin" />
       </div>
     </div>
-    <panels @on-redirect="onRedirect" />
+    <panels @on-redirect="onRedirect"  />
   </div>
 </template>
 
