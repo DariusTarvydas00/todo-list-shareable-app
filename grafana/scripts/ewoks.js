@@ -15,7 +15,7 @@ export let options = {
 };
 
 export default function () {
-    const response = http.get("https://192.168.0.3:3000/", {headers: {Accepts: "application/json"}});
+    const response = http.get("https://192.168.0.3:3000/auth/", {headers: {Accepts: "application/json"}});
     check(response, { "status is 200": (r) => r.status === 200 });
     sleep(.300);
 };
