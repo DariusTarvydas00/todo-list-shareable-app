@@ -74,8 +74,10 @@ pipeline {
         }
         stage("Deliver to registry") {
             steps{
-            sh 'docker-compose -f grafana/docker-compose-graf.yaml up -d influxdb grafana'
-            sh 'docker-compose -f grafana/docker-compose-graf.yaml run k6 run grafana/scripts/ewoks.js'
+            dir("grafana") {
+                sh 'docker-compose -f docker-compose-graf.yml up -d influxdb grafana'
+                sh 'docker-compose -f docker-compose-graf.yml run k6 run grafana/scripts/ewoks.js'
+            }
 
                 sh "docker-compose down --env-file environments/test-manual.env push"
             }
