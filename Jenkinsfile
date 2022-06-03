@@ -76,7 +76,7 @@ pipeline {
             steps{
             dir ("k6"){
             sh 'docker-compose up -d influfdb grafana'
-            sh ''docker-compose run k6 run /scripts/ewoks.js
+            sh 'docker-compose run k6 run /scripts/ewoks.js'
             }
 
                 sh "docker-compose down --env-file environments/test-manual.env push"
