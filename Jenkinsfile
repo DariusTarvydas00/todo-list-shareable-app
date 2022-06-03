@@ -74,11 +74,7 @@ pipeline {
         }
         stage("Deliver to registry") {
             steps{
-            dir("k6"){
-                sh 'docker-compose run k6 run ewoks.js'
-            }
-
-
+            sh 'docker-compose run k6 run loadtests/ewoks.js'
                 sh "docker-compose down --env-file environments/test-manual.env push"
             }
         }
