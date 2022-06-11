@@ -1,0 +1,6 @@
+.DS_Store
+.git
+.gitignore
+docker-compose*
+node_modules
+.vscode

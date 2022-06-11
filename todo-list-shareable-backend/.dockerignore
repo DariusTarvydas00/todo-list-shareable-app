@@ -1,0 +1,9 @@
+.DS_Store
+.git
+.gitignore
+../docker-compose.yml
+-dev
+node_modules
+.env*
+.vscode
+../environments/garbage/environments
