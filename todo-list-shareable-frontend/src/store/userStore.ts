@@ -1,8 +1,6 @@
 import {computed, reactive} from "vue";
-import UserService from "@/auth/services/user-service";
-import userService from "@/auth/services/user-service";
 import authService from "@/auth/services/auth-service";
-import {UserEntity} from "@/auth/user.entity";
+import {UserModel} from "@/auth/model/user-model";
 
 const state = reactive({
     username: '',
@@ -18,7 +16,7 @@ const actions = {
     async getUser() {
        // const user = await authService.getUser()
     },
-    async login(user: UserEntity){
+    async login(user: UserModel){
         const res = await authService.login(user)
         if (res == null){
             state.error = "Could not find user"
