@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import Login from "../views/LoginView.vue";
 import Register from "../views/RegisterView.vue";
+import store from "@/store";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Register,
   },
   {
+    path: "/ab",
+    name: "ab",
+    component: HomeView,
+  },
+  {
     path: "/about",
     name: "about",
     // route level code-splitting
@@ -29,6 +35,8 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
 ];
+
+import { computed, ref } from "vue";
 
 const router = createRouter({
   history: createWebHistory(),

@@ -1,28 +1,32 @@
 import axios from 'axios';
-import {UserEntity} from "@/auth/user.entity";
-const API_URL = 'http://localhost:3000/auth/';
+import {UserModel} from "@/auth/model/user-model";
+const API_URL = "http://161.97.99.214:3000";
 class AuthService {
-    login(user: UserEntity) {
-        return axios
-            .post(API_URL + 'signin', {
-                email: user.email,
-                password: user.password
-            })
-            .then(response => {
-                if (response.data.accessToken) {
-                    localStorage.setItem('user', JSON.stringify(response.data));
-                }
-                return response.data;
-            });
+    async login(user: UserModel) {
+        const {username,password} = user
+        await axios.post(API_URL + "/auth/signin",
+            {username: username, password: password},
+            {headers: {'Content-Type': 'application/json; charset=UTF-8'}
+            }).then(response => {
+            if (response.data.accessToken) {
+                localStorage.setItem('token', JSON.stringify(response.data));
+            }
+            return response.data;
+        })
     }
-    logout() {
-        localStorage.removeItem('user');
+    async register(user: UserModel) {
+        const {username, password} = user
+        await axios.post(API_URL + "/auth/signup",
+            {username: username, password: password},
+            {
+                headers: {'Content-Type': 'application/json; charset=UTF-8'}
+            }).then(response =>{
+            if (response.data.accessToken) {
+                localStorage.setItem('token', JSON.stringify(response.data));
+            }
+            return response.data
+        })
     }
-    register(user: UserEntity) {
-        return axios.post(API_URL + 'signup', {
-            email: user.email,
-            password: user.password
-        });
-    }
+
 }
 export default new AuthService();

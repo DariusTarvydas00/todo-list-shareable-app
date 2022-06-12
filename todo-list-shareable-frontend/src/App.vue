@@ -3,6 +3,28 @@
   <RouterView />
 </template>
 
+<script lang="ts">
+
+
+import store from "@/store";
+
+export default {
+  data() {
+    return {
+      userLoggedIn: (localStorage.getItem('token')) != null
+    };
+  },
+  methods:{
+    logout(){
+      localStorage.clear()
+      sessionStorage.clear()
+      window.location.reload()
+    }
+  }
+}
+
+</script>
+
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

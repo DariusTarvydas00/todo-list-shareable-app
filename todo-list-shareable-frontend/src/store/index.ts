@@ -1,17 +1,26 @@
-import {createLogger, createStore} from "vuex";
+import { createStore} from "vuex";
+
 
 const store = createStore({
-  modules: {
+  state: {
+    user: '',
+    token: ''
+  },
+  getters: {
+    getUser: state => {
+      return state.user
+    }
+  },
+  mutations: {
+    SAVE_USER(state,user) {
+      state.user = user;
+    }
+  },
+  actions: {
+    saveUser({commit}, user) {
+      commit('SAVE_USER',user);
+    }
   },
 });
 
-export default createStore({
-  state: {},
-  getters: {},
-  mutations: {
-    // SET_USER (state, user) {
-    // }
-  },
-  actions: {},
-  modules: {},
-});
+export default store

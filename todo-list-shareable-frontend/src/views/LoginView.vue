@@ -9,11 +9,11 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" name="email" v-model="form.email" type="email" autocomplete="email" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+            <input id="email-address" name="email" v-model="username" type="email" autocomplete="email" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
           </div>
           <div>
             <label for="password" class="sr-only">Password</label>
-            <input id="password" name="password" type="password" v-model="form.password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+            <input id="password" name="password" type="password" v-model="password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
           </div>
         </div>
         <div class="flex items-center justify-between">
@@ -31,44 +31,28 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import authService from "@/auth/services/auth-service";
 
 export default {
-  name: "App",
-  data() {
+  data(){
     return {
-      form:{
-        email: "",
-        password: "",
-      }
-    };
-  },
-  methods: {
-    login () {
-      console.log('asdf', this.form)
+      username: '',
+      password: '',
     }
-    //async register() {
-    //   //console.log(username,password)
-    //   const { email, password } = this;
-    //   try {
-    //     const res = await fetch(this.hostname + "/auth/signup",
-    //         {
-    //           method: "POST",
-    //           headers: {
-    //             "Content-Type": "application/json "
-    //           },
-    //           body: JSON.stringify({
-    //             email,
-    //             password,
-    //           })
-    //         }
-    //     );
-    //     const data = await res.json();
-    //     console.log(data);
-    //   } catch (e) {
-    //     console.log(e)
-    //   }
-    // }
+  },
+  methods:{
+    async login() {
+        if (sessionStorage.getItem('token') == null){
+          await authService.login(this.$data).then(() => {
+            this.$router.push('/ab')
+          }).catch((error) => {
+            if (error.response) {
+              console.log(error)
+              this.$router.push('/login')
+            }
+          });
+        }
+    },
   }
-};
+}
 </script>
