@@ -36,8 +36,8 @@ import authService from "@/auth/services/auth-service";
 export default {
   data(){
     return {
-      username: '',
-      password: '',
+      username: 'asd@asd.lt',
+      password: 'asd123ASD?',
     }
   },
   methods:{
