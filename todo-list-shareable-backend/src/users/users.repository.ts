@@ -7,7 +7,7 @@ export class UsersRepository extends Repository<User> {
         const {search} = filterDto;
         const query = this.createQueryBuilder('users');
         if (search) {
-            query.andWhere(('LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search)')), {search: '%${search}%'}
+            query.andWhere(('LOWER(user.username) LIKE LOWER(:search)')), {search: '%${search}%'}
         }
         return await query.getMany();
     }

@@ -43,7 +43,6 @@ const ENV = process.env.NODE_ENV;
         AuthModule,
         FriendListModule,
         UsersModule,
-    ],
-    controllers: [FriendListController],
+    ]
 })
 export class AppModule {}
