@@ -1,9 +1,9 @@
 import {EntityRepository, Repository} from "typeorm";
-import {Task} from "../entities/task.entity";
+import {Task} from "../core/task.entity";
 import {CreateTaskDto} from "./dto/create-task.dto";
 import {TaskStatus} from "./task-status.enum";
 import {GetTasksFilterDto} from "./dto/get-tasks-filter.dto";
-import {User} from "../entities/user.entity";
+import {User} from "../core/user.entity";
 import {Logger} from "@nestjs/common";
 
 @EntityRepository(Task)
@@ -29,7 +29,6 @@ export class TasksRepository extends Repository<Task>{
             description,
             status: TaskStatus.OPEN,
             user,
-            sharedWith
         });
         await this.save(task);
         return task;

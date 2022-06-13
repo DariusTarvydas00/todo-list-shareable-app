@@ -4,6 +4,9 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import { AuthModule } from './auth/auth.module';
 import {configValidationSchema} from "./config.schema";
+import { FriendListController } from './friendlist/friendList.controller';
+import { FriendListModule } from './friendlist/friendList.module';
+import { UsersModule } from './users/users.module';
 
 const ENV = process.env.NODE_ENV;
 
@@ -38,6 +41,9 @@ const ENV = process.env.NODE_ENV;
             },
         }),
         AuthModule,
+        FriendListModule,
+        UsersModule,
     ],
+    controllers: [FriendListController],
 })
 export class AppModule {}
