@@ -1,9 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
-import {Task} from "../core/task.entity";
-import {User} from "../core/user.entity";
 import {FriendListRepository} from "./friendlist.repository";
-import {FriendRequestEntity} from "../core/friendRequest.entity";
 
 @Injectable()
 export class FriendListService {
