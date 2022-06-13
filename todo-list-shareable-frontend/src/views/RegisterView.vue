@@ -32,54 +32,29 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import authService from "@/auth/services/auth-service";
 
 export default {
-  name: "App",
   data() {
     return {
-        username: "asd@asd.lt",
-        password: "Asd123?asd",
+        username: '',
+        password: '',
     };
   },
   methods: {
     async register() {
-      let data
-      const {username, password} = this
-      try {
-        const res = await fetch(this.hostname + "/auth/signup", {
-          method: "POST",
-          body: {
-            username: this.username,
-            password: this.password
-          }
-        })
-        //this.data = await res.json();
-      } catch (e) {
-        console.log(e)
-        console.log(data)
-      }
+      await authService.register(this.$data).then(() => {
+        this.$router.push('/login')
+      }).catch((error) => {
+        if (error.response) {
+          console.log(error)
+          this.$router.push('/register')
+        }
+      });
+    },
+    created() {
+      this.$emit('ready')
     }
-    // async register() {
-    //   let {email, password} = this
-    //   try {
-    //     const res = await fetch(this.hostname + "/auth/signup", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json "
-    //       },
-    //       body: {
-    //         email: "asdsds@asd.lt",
-    //         password: "asd123asD?"
-    //       }
-    //     })
-    //   } catch (e) {
-    //     console.log(e)
-    //   }
-    // }
-  },
-  created() {
-    this.$emit('ready')
   }
-};
+}
 </script>
