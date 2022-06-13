@@ -5,4 +5,6 @@ export class CreateTaskDto {
     title: string;
     @IsNotEmpty()
     description: string;
+    @IsNotEmpty()
+    sharedWith: string;
 }

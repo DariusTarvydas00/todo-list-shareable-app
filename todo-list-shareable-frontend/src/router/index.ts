@@ -21,8 +21,8 @@ const routes: Array<RouteRecordRaw> = [
     component: Register,
   },
   {
-    path: "/ab",
-    name: "ab",
+    path: "/home",
+    name: "Home",
     component: HomeView,
   },
   {
@@ -45,7 +45,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const publicPages = ['/login', '/register'];
   const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('token');
+  const loggedIn = sessionStorage.getItem('token');
 
   if (authRequired && !loggedIn) {
     next('/login');

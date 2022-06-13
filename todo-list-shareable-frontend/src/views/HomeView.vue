@@ -1,17 +1,17 @@
 <template>
   <div class="about">
-    <button @click="getTasks">Button</button>
+    <button @click="getTasks">Get all tasks</button>
   </div>
 
   <div>
     <input type="text" id="title" v-model="task.title" name="title" placeholder="title" />
     <input type="text" id="description" v-model="task.description" name="description" placeholder="description">
     <input type="text" id="status" v-model="task.status" name="status" placeholder="status" />
-    <button @click="createTask">Create</button>
+    <button @click="createTask">Create task</button>
   </div>
 
   <div class="container" v-if="tasks != null">
-    <h3 class="p-3 text-center">Vue.js - Display a list of items with v-for</h3>
+    <h3>All tasks</h3>
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
@@ -21,7 +21,22 @@
       </thead>
       <tbody>
       <tr v-for="task in tasks" :key="task.id">
-        <td>{{task.title}} {{task.description}} {{task.status}}<button @click="deleteTask(task.id)">Delete</button> <button @click="updateTaskStatus(task.id)">Update</button></td>
+        <td>{{task.title}} {{task.description}} {{task.status}}
+          <button @click="deleteTask(task.id)">Delete</button>
+        </td>
+        <td>
+          <div class="flex justify-center">
+            <div class="mb-3 xl:w-96">
+              <select @change="onChange($event,task.id)" class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300
+                rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="OPEN">Open</option>
+                <option value="IN_PROGRESS">In progress</option>
+                <option value="DONE" >Done</option>
+              </select>
+            </div>
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -45,7 +60,8 @@ export default defineComponent({
         title: '',
         description: '',
         status: ''
-      }
+      },
+      status: ''
     }
   },
   name: "ASD ASD",
@@ -60,7 +76,9 @@ export default defineComponent({
   methods:{
      async getTasks() {
        try {
-         await axios.get( "http://161.97.99.214:3000/tasks/").then(response => {this.tasks = response.data})
+         await axios.get( "http://161.97.99.214:3000/tasks/").then(response => {
+           this.tasks = response.data
+         })
        } catch (e) {
          console.log(e)
        }
@@ -85,10 +103,11 @@ export default defineComponent({
         console.log(e)
       }
     },
-    async updateTaskStatus(id: string){
+    async onChange(event: any, id:string) {
+      this.status = event.target.value
       try {
         await axios.patch( "http://161.97.99.214:3000/tasks/"+id+"/status",{
-          status: 'IN_PROGRESS'
+          status: this.status
         })
         await this.getTasks()
       } catch (e) {

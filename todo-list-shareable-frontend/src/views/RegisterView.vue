@@ -48,7 +48,6 @@ export default {
       }).catch((error) => {
         if (error.response) {
           console.log(error)
-          this.$router.push('/register')
         }
       });
     },

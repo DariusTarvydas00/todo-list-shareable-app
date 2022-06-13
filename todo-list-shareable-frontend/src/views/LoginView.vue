@@ -44,11 +44,10 @@ export default {
     async login() {
         if (sessionStorage.getItem('token') == null){
           await authService.login(this.$data).then(() => {
-            this.$router.push('/ab')
+            this.$router.push('/home')
           }).catch((error) => {
             if (error.response) {
               console.log(error)
-              this.$router.push('/login')
             }
           });
         }

@@ -5,9 +5,6 @@
 
 <script lang="ts">
 
-
-import store from "@/store";
-
 export default {
   data() {
     return {
