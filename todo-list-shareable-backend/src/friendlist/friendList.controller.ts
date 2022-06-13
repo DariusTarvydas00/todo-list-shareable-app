@@ -1,4 +1,9 @@
-import { Controller } from '@nestjs/common';
+import {Controller, Get, Query} from '@nestjs/common';
 
 @Controller('friendList')
-export class FriendListController {}
+export class FriendListController {
+    @Get()
+    getTasks(){
+        return true;
+    }
+}
