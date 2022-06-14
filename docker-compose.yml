@@ -24,6 +24,8 @@ services:
 #    volumes:
 #      - /node/app/node_modules
     container_name: nestjs_backend
+    depends_on:
+      - postgres
     networks:
       - net
 
