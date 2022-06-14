@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import {Accounts} from "../core/accounts.entity";
 
 @EntityRepository(User)
+@EntityRepository(Accounts)
 export class UsersRepository extends Repository<User>{
     async createUser(authCredentialsDto: AuthCredentialsDto): Promise<void> {
         const { username, password } = authCredentialsDto

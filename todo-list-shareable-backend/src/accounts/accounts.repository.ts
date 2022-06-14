@@ -5,7 +5,7 @@ import {User} from "../core/user.entity";
 
 @EntityRepository(User)
 export class AccountsRepository extends Repository<Accounts>{
-    async getAccounts(filterDto: GetTasksFilterDto): Promise<Accounts[]>{
+    async getAccounts(filterDto: GetTasksFilterDto, user: User): Promise<Accounts[]>{
         const {  search } = filterDto;
         const query = this.createQueryBuilder('user');
         if (search) {
