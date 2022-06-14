@@ -4,6 +4,8 @@ import {AuthCredentialsDto} from "./dto/auth-credentials.dto";
 import {ConflictException, InternalServerErrorException} from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
 import {Accounts} from "../core/accounts.entity";
+import {GetTasksFilterDto} from "../tasks/dto/get-tasks-filter.dto";
+import {Task} from "../core/task.entity";
 
 @EntityRepository(User)
 export class UsersRepository extends Repository<User>{
@@ -24,5 +26,13 @@ export class UsersRepository extends Repository<User>{
                 throw new InternalServerErrorException();
             }
         }
+    }
+    async getAccounts(filterDto: GetTasksFilterDto): Promise<Accounts[]> {
+            const { search } = filterDto;
+            const query = this.createQueryBuilder('user');
+            if (search) {
+                query.andWhere(('LOWER(user.username) LIKE LOWER(:search) ')), { search: '%${search}%' }
+            }
+            return await query.getMany();
     }
 }
