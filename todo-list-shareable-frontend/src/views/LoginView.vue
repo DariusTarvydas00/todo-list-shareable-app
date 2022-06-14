@@ -43,7 +43,7 @@ export default {
   methods:{
     async login() {
         if (sessionStorage.getItem('token') == null){
-          await authService.login(this.$data).then(() => {
+          let res = await authService.login(this.$data).then(() => {
             this.$router.push('/home')
           }).catch((error) => {
             if (error.response) {

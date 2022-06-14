@@ -17,9 +17,6 @@ export class Task{
     @Column()
     status: TaskStatus;
 
-    @Column()
-    sharedWith: User[];
-
     @ManyToOne((_type) => User, (user) => user.tasks, {eager: false})
     @Exclude({toPlainOnly: true})
     user: User
