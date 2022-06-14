@@ -2,10 +2,13 @@ import {EntityRepository, Repository} from "typeorm";
 import {Accounts} from "../core/accounts.entity";
 import {GetTasksFilterDto} from "../tasks/dto/get-tasks-filter.dto";
 import {User} from "../core/user.entity";
+import {Logger} from "@nestjs/common";
 
-@EntityRepository(Accounts)
+@EntityRepository(User)
 export class AccountsRepository extends Repository<Accounts>{
-    async getAccounts(filterDto: GetTasksFilterDto, user: User): Promise<Accounts[]>{
+    async getAccounts(filterDto: GetTasksFilterDto): Promise<Accounts[]>{
+        let logger = new Logger()
+        logger.log("reached")
         const {  search } = filterDto;
         const query = this.createQueryBuilder('user');
         if (search) {

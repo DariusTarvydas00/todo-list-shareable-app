@@ -1,18 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import {InjectRepository} from "@nestjs/typeorm";
 import {GetTasksFilterDto} from "../tasks/dto/get-tasks-filter.dto";
-import {User} from "../core/user.entity";
 import {Accounts} from "../core/accounts.entity";
-import {UsersRepository} from "../auth/users.repository";
+import {AccountsRepository} from "./accounts.repository";
 
 @Injectable()
 export class AccountsService {
     constructor(
-        @InjectRepository(UsersRepository)
-        private usersRepository: UsersRepository
+        @InjectRepository(AccountsRepository)
+        private accountsRepository: AccountsRepository
     ) {}
 
-    async getAccounts(filterDto: GetTasksFilterDto, user: User): Promise<Accounts[]>{
-        return this.usersRepository.getAccounts(filterDto);
+    async getAccounts(filterDto: GetTasksFilterDto): Promise<Accounts[]>{
+        return this.accountsRepository.getAccounts(filterDto);
     }
 }
