@@ -6,7 +6,7 @@ import {Logger} from "@nestjs/common";
 
 @EntityRepository(User)
 export class AccountsRepository extends Repository<Accounts>{
-    async getAccounts(filterDto: GetTasksFilterDto): Promise<Accounts[]>{
+    async getAccounts(filterDto: GetTasksFilterDto, user: User): Promise<Accounts[]>{
         let logger = new Logger()
         logger.log("reached")
         const {  search } = filterDto;

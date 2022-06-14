@@ -7,7 +7,6 @@ import {GetUser} from "../auth/get-user.decorator";
 import {User} from "../core/user.entity";
 
 @Controller('accounts')
-@UseGuards(AuthGuard())
 export class AccountsController {
 
     constructor(private accountsService: AccountsService) {}
@@ -17,8 +16,6 @@ export class AccountsController {
         @Query() filterDto: GetTasksFilterDto,
         @GetUser() user: User,
     ): Promise<Accounts[]> {
-        let logger = new Logger()
-        logger.log("Reached")
-        return this.accountsService.getAccounts(filterDto);
+        return this.accountsService.getAccounts(filterDto ,user);
     }
 }

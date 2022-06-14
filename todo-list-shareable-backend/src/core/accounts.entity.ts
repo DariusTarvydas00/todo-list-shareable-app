@@ -1,4 +1,6 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Exclude} from "class-transformer";
+import {User} from "./user.entity";
 
 @Entity()
 export class Accounts {
@@ -7,5 +9,9 @@ export class Accounts {
 
     @Column({unique:true})
     username: string;
+
+    @Column()
+    @Exclude({toPlainOnly: true})
+    password: string;
 
 }
