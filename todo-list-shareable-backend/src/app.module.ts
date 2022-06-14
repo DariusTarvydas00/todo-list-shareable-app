@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import {Logger, Module} from '@nestjs/common';
 import { TasksModule } from './tasks/tasks.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {ConfigModule, ConfigService} from "@nestjs/config";
@@ -10,19 +10,9 @@ const ENV = process.env.NODE_ENV;
 
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
-            type: 'postgres',
-            host: '161.97.99.214',
-            port: 5432,
-            username: 'postgres',
-            password: 'postgres',
-            database: 'postgres',
-            autoLoadEntities: true,
-            synchronize: true,
-        }),
         ConfigModule.forRoot({
             envFilePath: [`.env`],
-            validationSchema: configValidationSchema,
+            //validationSchema: configValidationSchema,
         }),
         TasksModule,
         TypeOrmModule.forRootAsync({
@@ -49,7 +39,8 @@ const ENV = process.env.NODE_ENV;
             },
        }),
         AuthModule,
-       AccountsModule,
+        AccountsModule,
     ],
 })
-export class AppModule {}
+export class AppModule {
+}
