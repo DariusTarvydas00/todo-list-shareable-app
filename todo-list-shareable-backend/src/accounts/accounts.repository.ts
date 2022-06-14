@@ -3,7 +3,7 @@ import {Accounts} from "../core/accounts.entity";
 import {GetTasksFilterDto} from "../tasks/dto/get-tasks-filter.dto";
 import {User} from "../core/user.entity";
 
-@EntityRepository(User)
+@EntityRepository(Accounts)
 export class AccountsRepository extends Repository<Accounts>{
     async getAccounts(filterDto: GetTasksFilterDto, user: User): Promise<Accounts[]>{
         const {  search } = filterDto;
