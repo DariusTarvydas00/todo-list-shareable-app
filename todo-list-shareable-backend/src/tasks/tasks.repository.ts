@@ -23,7 +23,7 @@ export class TasksRepository extends Repository<Task>{
     }
 
     async createTask(createTaskDto: CreateTaskDto, user: User): Promise<Task> {
-        const { title, description, sharedWith } = createTaskDto;
+        const { title, description } = createTaskDto;
         const task = this.create({
             title,
             description,

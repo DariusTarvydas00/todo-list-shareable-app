@@ -35,7 +35,6 @@ export class TasksController {
         @Body() createTaskDto: CreateTaskDto,
         @GetUser() user: User,
     ): Promise<Task> {
-        this.logger.verbose('User "${user.name}" creating a new task. Data: ${JSON.stringify(createTaskDto)}')
         return this.tasksService.createTask(createTaskDto, user);
     }
 
@@ -50,6 +49,7 @@ export class TasksController {
         @Body() updateTaskStatusDto: UpdateTaskStatusDto,
         @GetUser() user: User,
     ): Promise<Task>{
+        this.logger.log("changed")
         const { status } = updateTaskStatusDto
         return this.tasksService.updateTaskStatus(id,status, user);
     }

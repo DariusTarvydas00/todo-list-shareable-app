@@ -69,7 +69,6 @@
 </template>
 <script lang="ts">
 import axios from "axios";
-import {TaskModel} from "@/auth/model/task-model";
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -83,20 +82,10 @@ export default defineComponent({
       task: {
         title: '',
         description: '',
-        status: ''
       },
       status: ''
     }
   },
-  name: "ASD ASD",
-  created() {
-    try {
-      this.getTasks()
-    } catch (e) {
-      console.log(e)
-    }
-  }
-    ,
   methods:{
      async getTasks() {
        try {
@@ -107,12 +96,12 @@ export default defineComponent({
          console.log(e)
        }
      },
-    async createTask(task: TaskModel){
+    async createTask(){
       try {
         await axios.post( "http://161.97.99.214:3000/tasks/",{
-          title: this.task.title,
-          description: this.task.description
-        })
+            title: this.task.title,
+            description: this.task.description
+        },)
         await this.getTasks()
       } catch (e) {
         console.log(e)
@@ -132,7 +121,7 @@ export default defineComponent({
       try {
         await axios.patch( "http://161.97.99.214:3000/tasks/"+id+"/status",{
           status: this.status
-        })
+        },)
         await this.getTasks()
       } catch (e) {
         console.log(e)

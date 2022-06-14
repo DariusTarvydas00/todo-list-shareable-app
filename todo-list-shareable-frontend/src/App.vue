@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      userLoggedIn: (localStorage.getItem('token')) != null
+      userLoggedIn: (sessionStorage.getItem('token')) != null
     };
   },
   methods:{
